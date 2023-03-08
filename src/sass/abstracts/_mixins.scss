@@ -1,0 +1,39 @@
+@mixin for-size($size, $custom-size: 0px) {
+  @if $size == "extra-small-up" {
+    @media (min-width: 0px) {
+      @content;
+    }
+  } @else if $size == "small-up" {
+    @media (min-width: 600px) {
+      @content;
+    }
+  } @else if $size == "tablet-up" {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $size == "medium-up" {
+    @media (min-width: 900px) {
+      @content;
+    }
+  } @else if $size == "large-up" {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  } @else if $size == "desktop-up" {
+    @media (min-width: 1440px) {
+      @content;
+    }
+  } @else if $size == "extra-large-up" {
+    @media (min-width: 1536px) {
+      @content;
+    }
+  } @else if $size == "high-res-up" {
+    @media (min-width: 1920px) {
+      @content;
+    }
+  } @else if ($size == "custom-up") {
+    @media (min-width: $custom-size) {
+      @content;
+    }
+  }
+}

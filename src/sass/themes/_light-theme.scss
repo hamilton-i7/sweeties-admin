@@ -1,0 +1,33 @@
+$light-theme-map: (
+  "primary": #8d418a,
+  "on-primary": #ffffff,
+  "primary-container": #ffd7f7,
+  "on-primary-container": #380039,
+  "secondary": #5156a9,
+  "on-secondary": #ffffff,
+  "secondary-container": #e1e0ff,
+  "on-secondary-container": #070764,
+  "tertiary": #7d5700,
+  "on-tertiary": #ffffff,
+  "tertiary-container": #ffdeaa,
+  "on-tertiary-container": #271900,
+  "error": #ba1a1a,
+  "on-error": #ffffff,
+  "error-container": #ffdad6,
+  "on-error-container": #410002,
+  "background": #fffbff,
+  "on-background": #1e1a1d,
+  "surface": #fffbff,
+  "on-surface": #1e1a1d,
+  "surface-variant": #eedee7,
+  "on-surface-variant": #4e444b,
+  "outline": #7f747c,
+  "outline-variant": #d1c3cb,
+  "inverse-surface": #342f32,
+  "inverse-on-surface": #f8eef2,
+  "inverse-primary": #ffaaf6,
+);
+
+@function theme-get($key) {
+  @return map-get($map: $light-theme-map, $key: $key);
+}
