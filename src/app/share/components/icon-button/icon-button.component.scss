@@ -1,0 +1,22 @@
+@use "../../../../sass/abstracts/placeholders";
+
+button {
+  @extend %ripple;
+
+  background: none;
+  border: none;
+  border-radius: 50%;
+  height: 4rem;
+  outline: none;
+  overflow: hidden;
+  padding: 0;
+  width: 4rem;
+
+  & .state-layer {
+    display: grid;
+    height: 100%;
+    place-items: center;
+    position: relative;
+    width: 100%;
+  }
+}

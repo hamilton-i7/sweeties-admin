@@ -31,3 +31,39 @@ $light-theme-map: (
 @function theme-get($key) {
   @return map-get($map: $light-theme-map, $key: $key);
 }
+
+app-top-bar {
+  & .top-bar {
+    background-color: theme-get("surface");
+    transition: background-color 150ms ease-in;
+
+    &__nav-icon path {
+      fill: theme-get("on-surface");
+    }
+
+    &__title {
+      color: theme-get("on-surface");
+    }
+  }
+
+  & header.elevation {
+    background-color: #f6ecf6;
+  }
+}
+
+app-icon-button {
+  & button:hover .state-layer {
+    background-color: rgba(
+      $color: theme-get("on-surface-variant"),
+      $alpha: 0.08
+    );
+  }
+
+  & button:focus .state-layer,
+  & button:active .state-layer {
+    background-color: rgba(
+      $color: theme-get("on-surface-variant"),
+      $alpha: 0.12
+    );
+  }
+}

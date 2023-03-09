@@ -1,0 +1,24 @@
+@use "../../../../sass/base/typography";
+
+.top-bar {
+  align-items: center;
+  column-gap: 0.8rem;
+  display: flex;
+  height: 6.4rem;
+  left: 0;
+  padding: 0 1.6rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  &__title {
+    @extend %title-l;
+    flex: 1;
+  }
+
+  &__actions {
+    align-items: center;
+    column-gap: 1.6rem;
+    display: flex;
+  }
+}
