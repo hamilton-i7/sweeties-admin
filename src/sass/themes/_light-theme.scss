@@ -133,6 +133,16 @@ app-category-item {
   }
 }
 
+app-product-item {
+  & .product {
+    background-color: #f9f2f9;
+
+    &__leading-icon path {
+      fill: theme-get("on-surface-variant");
+    }
+  }
+}
+
 app-switch {
   & .switch {
     & span.slider {

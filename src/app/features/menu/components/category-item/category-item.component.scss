@@ -1,0 +1,14 @@
+@use "../../../../../sass/base/typography";
+
+.category {
+  height: 6.4rem;
+  display: flex;
+  align-items: center;
+  column-gap: 1.2rem;
+  padding: 0 1.6rem;
+
+  &__name {
+    @extend %title-l;
+    flex: 1;
+  }
+}
