@@ -113,11 +113,23 @@
             "firebaseProject": "sweeties672-4f600",
             "firebaseHostingSite": "sweeties672-4f600"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "c9e5f85c-969c-4a43-b259-1a79877c7570"
+    "analytics": "c9e5f85c-969c-4a43-b259-1a79877c7570",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

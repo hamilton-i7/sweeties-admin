@@ -1,0 +1,7 @@
+<ng-container *ngIf="state$ | async as data">
+  <ul class="menu-list" *ngIf="data.value?.length">
+    <li *ngFor="let category of data.value">
+      <app-category-item [category]="category"></app-category-item>
+    </li>
+  </ul>
+</ng-container>

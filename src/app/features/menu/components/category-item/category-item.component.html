@@ -1,4 +1,4 @@
-<li class="category" *ngIf="category">
+<div class="category" *ngIf="category">
   <svg
     class="category__leading-icon"
     width="24"
@@ -13,4 +13,4 @@
   </svg>
   <h2 class="category__name">{{ category.name }}</h2>
   <app-switch [checked]="category.active"></app-switch>
-</li>
+</div>

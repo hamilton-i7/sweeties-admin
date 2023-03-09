@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 export class TopBarComponent {
   private static NO_ELEVATION_OFFSET_LIMIT = 30;
 
-  @Input() headline: string = '';
+  @Input() headline = '';
   @Input() showNavigationIcon = false;
 
   showElevation$ = new BehaviorSubject(false);
