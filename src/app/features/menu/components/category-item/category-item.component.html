@@ -14,5 +14,8 @@
     </svg>
   </app-icon-button>
   <h2 class="category__name">{{ category.name }}</h2>
-  <app-switch [checked]="category.active"></app-switch>
+  <app-switch
+    [checked]="category.active"
+    (checkedChange)="onActiveToggle($event)"
+  ></app-switch>
 </div>

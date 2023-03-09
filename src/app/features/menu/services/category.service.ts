@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
-import { collectionData, Firestore } from '@angular/fire/firestore';
+import {
+  collectionData,
+  doc,
+  Firestore,
+  updateDoc,
+} from '@angular/fire/firestore';
 import { collection, FirestoreError } from '@firebase/firestore';
-import { Observable, of, map, catchError, startWith } from 'rxjs';
+import { Observable, of, map, catchError, startWith, from } from 'rxjs';
 import { PATH_CATEGORIES } from '../../../core/constants/category';
 import { categoryConverter } from '../../../core/converters/category';
 import { ICategory } from '../../../core/models/category';
@@ -21,6 +26,17 @@ export class CategoryService {
       map((categories) => ({ loading: false, value: categories })),
       catchError(this.handleError<ICategory[]>('getCategories', [])),
       startWith({ loading: true })
+    );
+  }
+
+  updateCategory(category: ICategory): Observable<RequestState<void>> {
+    const ref = doc(
+      this.firestore,
+      `${PATH_CATEGORIES}/${category.id}`
+    ).withConverter(categoryConverter);
+    return from(updateDoc(ref, category)).pipe(
+      map(() => ({ loading: false, value: undefined })),
+      catchError(this.handleError<void>('updateCategory'))
     );
   }
 

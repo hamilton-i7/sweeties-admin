@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ICategory } from '../../../../core/models/category';
 
 @Component({
@@ -8,4 +8,9 @@ import { ICategory } from '../../../../core/models/category';
 })
 export class CategoryItemComponent {
   @Input() category?: ICategory;
+  @Output() activeChange = new EventEmitter<boolean>();
+
+  onActiveToggle(active: boolean) {
+    this.activeChange.emit(active);
+  }
 }

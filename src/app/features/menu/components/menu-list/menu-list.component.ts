@@ -23,4 +23,12 @@ export class MenuListComponent implements OnInit {
       this.state$.next(state);
     });
   }
+
+  onActiveChange(category: ICategory, active: boolean): void {
+    const newCategory: ICategory = {
+      ...category,
+      active,
+    };
+    this.categoryService.updateCategory(newCategory);
+  }
 }
