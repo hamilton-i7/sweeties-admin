@@ -90,6 +90,10 @@ app-text-button {
   & .button--text:active {
     background-color: rgba($color: theme-get("primary"), $alpha: 0.12);
   }
+
+  & .button--text svg path {
+    fill: theme-get("primary");
+  }
 }
 
 app-client-item {
@@ -115,6 +119,72 @@ app-navigation-card {
     background-color: theme-get("surface-variant");
     &__top {
       background-color: theme-get("primary");
+    }
+  }
+}
+
+app-category-item {
+  & .category {
+    background-color: #f2e7f2;
+
+    &__leading-icon path {
+      fill: theme-get("on-surface-variant");
+    }
+  }
+}
+
+app-switch {
+  & .switch {
+    & span.slider {
+      background-color: theme-get("surface-variant");
+      border: 0.2rem solid theme-get("outline");
+    }
+
+    & span.slider::before {
+      background-color: transparent;
+    }
+
+    & span.slider::after {
+      background-color: theme-get("outline");
+    }
+
+    & input:checked + span.slider {
+      background-color: theme-get("secondary");
+      border-color: transparent;
+    }
+
+    & input:checked + span.slider::after {
+      background-color: theme-get("on-secondary");
+    }
+
+    & input:not(:disabled):hover + span.slider::after {
+      background-color: theme-get("on-surface-variant");
+    }
+
+    & input:not(:disabled):hover + span.slider::before,
+    & input:not(:disabled):checked:hover + span.slider::before {
+      background-color: rgba(
+        $color: theme-get("on-surface-variant"),
+        $alpha: 0.08
+      );
+    }
+
+    & input:not(:disabled):focus + span.slider::before,
+    & input:not(:disabled):active + span.slider::before,
+    & input:not(:disabled):checked:focus + span.slider::before,
+    & input:not(:disabled):checked:active + span.slider::before {
+      background-color: rgba(
+        $color: theme-get("on-surface-variant"),
+        $alpha: 0.12
+      );
+    }
+
+    & input:not(:disabled):checked:hover + span.slider::after {
+      background-color: theme-get("secondary-container");
+    }
+
+    & input:not(:disabled):checked:active + span.slider::after {
+      background-color: theme-get("secondary-container");
     }
   }
 }
