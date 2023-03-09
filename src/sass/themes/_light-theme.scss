@@ -26,6 +26,10 @@ $light-theme-map: (
   "inverse-surface": #342f32,
   "inverse-on-surface": #f8eef2,
   "inverse-primary": #ffaaf6,
+  "custom-color": #1e6c2a,
+  "custom-on-color": #ffffff,
+  "custom-color-container": #a5f6a2,
+  "custom-on-color-container": #002105,
 );
 
 @function theme-get($key) {
@@ -80,5 +84,23 @@ app-text-button {
   & .button--text:focus,
   & .button--text:active {
     background-color: rgba($color: theme-get("primary"), $alpha: 0.12);
+  }
+}
+
+app-client-item {
+  & .client {
+    background-color: theme-get("tertiary-container");
+
+    &__email {
+      color: theme-get("on-surface-variant");
+    }
+
+    &__status {
+      background-color: theme-get("custom-color-container");
+    }
+
+    &__status-text {
+      color: theme-get("custom-on-color-container");
+    }
   }
 }

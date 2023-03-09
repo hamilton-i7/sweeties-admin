@@ -1,0 +1,17 @@
+@use "../../../../../sass/base/typography";
+
+.clients {
+  &__header {
+    padding: 0 1.6rem;
+  }
+
+  &__title {
+    @extend %headline-l;
+    margin-bottom: 1.6rem;
+  }
+
+  &__button {
+    margin-top: 0.4rem;
+    margin-left: 1.6rem;
+  }
+}
