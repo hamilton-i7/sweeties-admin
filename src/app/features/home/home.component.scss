@@ -1,0 +1,10 @@
+.home {
+  padding-top: calc(var(--top-bar-height) + 2.4rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-button {
+  align-self: flex-end;
+  margin-right: 1.6rem;
+}

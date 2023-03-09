@@ -67,3 +67,18 @@ app-icon-button {
     );
   }
 }
+
+app-text-button {
+  & .button--text {
+    color: theme-get("primary");
+  }
+
+  & .button--text:hover {
+    background-color: rgba($color: theme-get("primary"), $alpha: 0.08);
+  }
+
+  & .button--text:focus,
+  & .button--text:active {
+    background-color: rgba($color: theme-get("primary"), $alpha: 0.12);
+  }
+}
