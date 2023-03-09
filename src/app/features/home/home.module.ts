@@ -5,9 +5,11 @@ import { ShareModule } from '../../share/share.module';
 import { HomeTopBarComponent } from './components/home-top-bar/home-top-bar.component';
 import { ClientsComponent } from './components/clients/clients.component';
 import { ClientItemComponent } from './components/client-item/client-item.component';
+import { NavigationCardComponent } from './components/navigation-card/navigation-card.component';
+import { HomeCardsComponent } from './components/home-cards/home-cards.component';
 
 @NgModule({
-  declarations: [HomeComponent, HomeTopBarComponent, ClientsComponent, ClientItemComponent],
+  declarations: [HomeComponent, HomeTopBarComponent, ClientsComponent, ClientItemComponent, NavigationCardComponent, HomeCardsComponent],
   imports: [CommonModule, ShareModule],
   exports: [HomeComponent],
 })

@@ -1,0 +1,33 @@
+@use "../../../../../sass/base/typography";
+
+.card {
+  --top-height: 13.2rem;
+
+  height: 20rem;
+  width: 20rem;
+  overflow: hidden;
+  border-radius: 0.8rem;
+
+  &__top {
+    height: var(--top-height);
+    width: 100%;
+    border-bottom-left-radius: 0.8rem;
+    border-bottom-right-radius: 0.8rem;
+    display: grid;
+    place-items: center;
+  }
+
+  & img {
+    width: 10rem;
+  }
+
+  &__body {
+    height: calc(100% - var(--top-height));
+    display: grid;
+    place-items: center;
+  }
+
+  &__title {
+    @extend %body-l;
+  }
+}

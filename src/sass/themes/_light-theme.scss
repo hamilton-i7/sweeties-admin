@@ -36,6 +36,11 @@ $light-theme-map: (
   @return map-get($map: $light-theme-map, $key: $key);
 }
 
+body {
+  background-color: theme-get("background");
+  color: theme-get("on-background");
+}
+
 app-top-bar {
   & .top-bar {
     background-color: theme-get("surface");
@@ -101,6 +106,15 @@ app-client-item {
 
     &__status-text {
       color: theme-get("custom-on-color-container");
+    }
+  }
+}
+
+app-navigation-card {
+  & .card {
+    background-color: theme-get("surface-variant");
+    &__top {
+      background-color: theme-get("primary");
     }
   }
 }
