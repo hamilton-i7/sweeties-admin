@@ -20,11 +20,18 @@
             "outputPath": "dist/sweeties-admin",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon-32x32.png", "src/assets"],
-            "styles": ["src/sass/styles.scss"],
+            "assets": [
+              "src/favicon-32x32.png",
+              "src/assets"
+            ],
+            "styles": [
+              "src/sass/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -49,7 +56,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -75,12 +88,30 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon-32x32.png", "src/assets"],
-            "styles": ["src/sass/styles.scss"],
+            "assets": [
+              "src/favicon-32x32.png",
+              "src/assets"
+            ],
+            "styles": [
+              "src/sass/styles.scss"
+            ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "sweeties-admin:build:production",
+            "firebaseProject": "sweeties672-4f600",
+            "firebaseHostingSite": "sweeties672-4f600"
           }
         }
       }

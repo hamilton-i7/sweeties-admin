@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "sweeties672-4f600": {
+      "hosting": {
+        "sweeties-admin": [
+          "sweeties672-4f600"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "sweeties672-4f600"
+  }
+}
