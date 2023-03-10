@@ -140,6 +140,10 @@ app-product-item {
     &__leading-icon path {
       fill: theme-get("on-surface-variant");
     }
+
+    &__img-container {
+      border: 0.1rem solid theme-get("outline");
+    }
   }
 }
 

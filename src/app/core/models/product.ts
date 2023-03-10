@@ -2,8 +2,8 @@ export interface IProduct {
   readonly id: string;
   readonly categoryId: string;
   readonly name: string;
-  readonly description?: string;
-  readonly price?: string;
+  readonly description: string | null;
+  readonly price: string | null;
   readonly active: boolean;
   readonly recommended: boolean;
   readonly imgPath: string;

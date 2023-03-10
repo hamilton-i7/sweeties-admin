@@ -1,10 +1,18 @@
-<ng-container *ngIf="state$ | async as data">
-  <ul class="menu-list" *ngIf="data.value?.length">
-    <li *ngFor="let category of data.value">
+<ng-container *ngIf="menuState$ | async as menu">
+  <ul class="menu-list" *ngIf="menu.value?.size">
+    <li *ngFor="let item of menu.value | keyvalue : setupKeysOrder">
       <app-category-item
-        [category]="category"
-        (activeChange)="onActiveChange(category, $event)"
+        [category]="item.key"
+        (activeChange)="onCategoryStateChange(item.key, $event)"
       ></app-category-item>
+      <ul class="products" *ngIf="item.value.length">
+        <li *ngFor="let product of item.value">
+          <app-product-item
+            [product]="product"
+            (activeChange)="onProductStateChange(product, $event)"
+          ></app-product-item>
+        </li>
+      </ul>
     </li>
   </ul>
 </ng-container>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IProduct } from '../../../../core/models/product';
 
 @Component({
@@ -8,4 +8,9 @@ import { IProduct } from '../../../../core/models/product';
 })
 export class ProductItemComponent {
   @Input() product?: IProduct;
+  @Output() activeChange = new EventEmitter<boolean>();
+
+  onActiveToggle(active: boolean) {
+    this.activeChange.emit(active);
+  }
 }

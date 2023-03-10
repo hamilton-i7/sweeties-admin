@@ -13,9 +13,12 @@
       />
     </svg>
   </app-icon-button>
-  <span class="product__details">
+  <figure class="product__img-container">
     <img [src]="product.imgUrl" [alt]="product.name" class="product__img" />
-    <h2 class="product__name">{{ product.name }}</h2>
-  </span>
-  <app-switch [checked]="product.active"></app-switch>
+  </figure>
+  <h2 class="product__name">{{ product.name }}</h2>
+  <app-switch
+    [checked]="product.active"
+    (checkedChange)="onActiveToggle($event)"
+  ></app-switch>
 </li>
