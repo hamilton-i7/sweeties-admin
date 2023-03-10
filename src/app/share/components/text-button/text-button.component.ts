@@ -9,6 +9,8 @@ export class TextButtonComponent {
   @Input() label = '';
   @Output() btnClick = new EventEmitter();
 
+  @Input() href?: string;
+
   onClick() {
     this.btnClick.emit();
   }

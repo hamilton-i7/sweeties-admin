@@ -1,4 +1,12 @@
-<button type="button" class="button--text" (click)="onClick()">
+<a *ngIf="href" [routerLink]="href">
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</a>
+
+<button *ngIf="!href" type="button" class="button--text" (click)="onClick()">
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</button>
+
+<ng-template #content>
   <ng-content></ng-content>
   <span class="label">{{ label }}</span>
-</button>
+</ng-template>

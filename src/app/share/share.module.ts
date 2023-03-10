@@ -4,6 +4,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { IconButtonComponent } from './components/icon-button/icon-button.component';
 import { TextButtonComponent } from './components/text-button/text-button.component';
 import { SwitchComponent } from './components/switch/switch.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { SwitchComponent } from './components/switch/switch.component';
     TextButtonComponent,
     SwitchComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   exports: [
     TopBarComponent,
     IconButtonComponent,
