@@ -4,12 +4,16 @@ import { AddEditCategoryComponent } from './pages/add-edit-category/add-edit-cat
 import { MenuComponent } from './pages/menu/menu.component';
 
 const routes: Routes = [
-  { path: 'menu', component: MenuComponent, title: 'Sweeties672 | Menú' },
+  {
+    path: 'menu/:id',
+    component: AddEditCategoryComponent,
+  },
   {
     path: 'menu/add-category',
     component: AddEditCategoryComponent,
-    title: 'Sweeties672 | Agregar Categoría',
+    title: 'Agregar Categoría',
   },
+  { path: 'menu', component: MenuComponent, title: 'Menú' },
 ];
 
 @NgModule({

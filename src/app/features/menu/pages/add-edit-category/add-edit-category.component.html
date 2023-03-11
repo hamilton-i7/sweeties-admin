@@ -1,4 +1,6 @@
-<app-add-edit-category-top-bar></app-add-edit-category-top-bar>
+<app-add-edit-category-top-bar
+  [editVariant]="editVariant"
+></app-add-edit-category-top-bar>
 <main class="add-edit-category">
   <app-text-field
     label="Nombre"
@@ -14,7 +16,7 @@
     <app-button
       [label]="editVariant ? 'Actualizar' : 'Agregar'"
       [variant]="buttonVariant.FILLED"
-      (btnClick)="onAdd()"
+      (btnClick)="onConfirm()"
     ></app-button>
   </div>
 </main>

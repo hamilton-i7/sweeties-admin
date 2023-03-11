@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
 
-const routes: Routes = [
-  { path: '', component: HomeComponent, title: 'Sweeties672 Admin | Home' },
-];
+const routes: Routes = [{ path: '', component: HomeComponent, title: 'Home' }];
 
 @NgModule({
   imports: [

@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   collectionData,
   doc,
   Firestore,
+  getDoc,
   setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
+import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
 import { collection, FirestoreError } from '@firebase/firestore';
 import { Observable, of, map, catchError, startWith, from } from 'rxjs';
 import { PATH_CATEGORIES } from '../../../core/constants/category';
@@ -26,6 +28,17 @@ export class CategoryService {
     return collectionData(ref, { idField: 'id' }).pipe(
       map((categories) => ({ loading: false, value: categories })),
       catchError(this.handleError<ICategory[]>('getCategories', [])),
+      startWith({ loading: true })
+    );
+  }
+
+  getCategory(id: string): Observable<RequestState<ICategory | undefined>> {
+    const ref = doc(this.firestore, PATH_CATEGORIES, id).withConverter(
+      categoryConverter
+    );
+    return from(getDoc(ref)).pipe(
+      map((docSnap) => ({ loading: false, value: docSnap.data() })),
+      catchError(this.handleError<ICategory | undefined>('getCategory')),
       startWith({ loading: true })
     );
   }
@@ -59,3 +72,14 @@ export class CategoryService {
     };
   }
 }
+
+export const categoryNameResolver: ResolveFn<string> = (
+  route: ActivatedRouteSnapshot
+) => {
+  const categoryId = route.paramMap.get('id');
+
+  if (!categoryId) return of('');
+  return inject(CategoryService)
+    .getCategory(categoryId)
+    .pipe(map((state) => state.value?.name ?? ''));
+};

@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-add-edit-category-top-bar',
@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-edit-category-top-bar.component.scss'],
 })
 export class AddEditCategoryTopBarComponent {
+  @Input() editVariant = false;
+
   constructor(private location: Location) {}
 
   onClose(): void {

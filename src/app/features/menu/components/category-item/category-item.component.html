@@ -1,4 +1,4 @@
-<div class="category" *ngIf="category">
+<a class="category" *ngIf="category" [routerLink]="category.id">
   <app-icon-button>
     <svg
       class="category__leading-icon"
@@ -18,4 +18,4 @@
     [checked]="category.active"
     (checkedChange)="onActiveToggle($event)"
   ></app-switch>
-</div>
+</a>

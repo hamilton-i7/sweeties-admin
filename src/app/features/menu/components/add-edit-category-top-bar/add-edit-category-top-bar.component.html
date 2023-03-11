@@ -1,4 +1,6 @@
-<app-top-bar headline="Agregar categoría">
+<app-top-bar
+  [headline]="editVariant ? 'Actualizar categoría' : 'Agregar categoría'"
+>
   <app-icon-button (btnClick)="onClose()">
     <svg
       width="24"

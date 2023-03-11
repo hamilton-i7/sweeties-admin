@@ -10,10 +10,21 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { MenuListComponent } from './components/menu-list/menu-list.component';
 import { AddEditCategoryComponent } from './pages/add-edit-category/add-edit-category.component';
 import { AddEditCategoryTopBarComponent } from './components/add-edit-category-top-bar/add-edit-category-top-bar.component';
+import { TitleStrategy } from '@angular/router';
+import { AppTitlePrefix } from '../../core/injectables/app-title-prefix';
 
 @NgModule({
-  declarations: [MenuComponent, MenuTopBarComponent, CategoryItemComponent, ProductItemComponent, MenuListComponent, AddEditCategoryComponent, AddEditCategoryTopBarComponent],
+  declarations: [
+    MenuComponent,
+    MenuTopBarComponent,
+    CategoryItemComponent,
+    ProductItemComponent,
+    MenuListComponent,
+    AddEditCategoryComponent,
+    AddEditCategoryTopBarComponent,
+  ],
   imports: [CommonModule, MenuRoutingModule, ShareModule],
   exports: [MenuComponent],
+  providers: [{ provide: TitleStrategy, useClass: AppTitlePrefix }],
 })
 export class MenuModule {}
