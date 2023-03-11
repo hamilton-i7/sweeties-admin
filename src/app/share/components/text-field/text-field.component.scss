@@ -1,0 +1,22 @@
+@use "../../../../sass/base/typography";
+
+.text-field {
+  &__label-text {
+    @extend %body-l;
+    margin-bottom: 0.4rem;
+  }
+
+  &__input {
+    @extend %body-l;
+    border-radius: 0.4rem;
+    width: 100%;
+  }
+
+  &__error {
+    @extend %label-s;
+
+    margin-left: 1.6rem;
+    margin-top: 0.4rem;
+    text-align: start;
+  }
+}

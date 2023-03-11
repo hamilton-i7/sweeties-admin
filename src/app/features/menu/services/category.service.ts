@@ -3,6 +3,7 @@ import {
   collectionData,
   doc,
   Firestore,
+  setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
 import { collection, FirestoreError } from '@firebase/firestore';
@@ -29,13 +30,24 @@ export class CategoryService {
     );
   }
 
+  addCategory(category: ICategory): Observable<RequestState<void>> {
+    const ref = doc(this.firestore, PATH_CATEGORIES, category.id).withConverter(
+      categoryConverter
+    );
+    return from(setDoc(ref, category)).pipe(
+      map(() => ({ loading: false })),
+      catchError(this.handleError<void>('addCategory')),
+      startWith({ loading: true })
+    );
+  }
+
   updateCategory(category: ICategory): Observable<RequestState<void>> {
     const ref = doc(
       this.firestore,
       `${PATH_CATEGORIES}/${category.id}`
     ).withConverter(categoryConverter);
     return from(updateDoc(ref, category)).pipe(
-      map(() => ({ loading: false, value: undefined })),
+      map(() => ({ loading: false })),
       catchError(this.handleError<void>('updateCategory'))
     );
   }

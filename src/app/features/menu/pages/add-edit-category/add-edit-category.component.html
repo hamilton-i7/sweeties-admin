@@ -1,0 +1,20 @@
+<app-add-edit-category-top-bar></app-add-edit-category-top-bar>
+<main class="add-edit-category">
+  <app-text-field
+    label="Nombre"
+    [value]="name"
+    (valueChange)="onNameChange($event)"
+  ></app-text-field>
+  <div class="actions">
+    <app-button
+      label="Cancelar"
+      [variant]="buttonVariant.OUTLINED"
+      (btnClick)="onCancel()"
+    ></app-button>
+    <app-button
+      [label]="editVariant ? 'Actualizar' : 'Agregar'"
+      [variant]="buttonVariant.FILLED"
+      (btnClick)="onAdd()"
+    ></app-button>
+  </div>
+</main>

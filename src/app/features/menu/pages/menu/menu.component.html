@@ -1,7 +1,11 @@
 <app-menu-top-bar></app-menu-top-bar>
 <main class="menu">
   <div class="actions">
-    <app-text-button label="Agregar categoría">
+    <app-button
+      label="Agregar categoría"
+      href="/menu/add-category"
+      [variant]="buttonVariant.TEXT"
+    >
       <svg
         width="24"
         height="24"
@@ -13,8 +17,8 @@
           d="M18 13H13V18C13 18.55 12.55 19 12 19C11.45 19 11 18.55 11 18V13H6C5.45 13 5 12.55 5 12C5 11.45 5.45 11 6 11H11V6C11 5.45 11.45 5 12 5C12.55 5 13 5.45 13 6V11H18C18.55 11 19 11.45 19 12C19 12.55 18.55 13 18 13Z"
         />
       </svg>
-    </app-text-button>
-    <app-text-button label="Agregar producto">
+    </app-button>
+    <app-button label="Agregar producto" [variant]="buttonVariant.TEXT">
       <svg
         width="24"
         height="24"
@@ -26,7 +30,7 @@
           d="M18 13H13V18C13 18.55 12.55 19 12 19C11.45 19 11 18.55 11 18V13H6C5.45 13 5 12.55 5 12C5 11.45 5.45 11 6 11H11V6C11 5.45 11.45 5 12 5C12.55 5 13 5.45 13 6V11H18C18.55 11 19 11.45 19 12C19 12.55 18.55 13 18 13Z"
         />
       </svg>
-    </app-text-button>
+    </app-button>
   </div>
 
   <app-menu-list></app-menu-list>

@@ -1,0 +1,15 @@
+.add-edit-category {
+  padding: calc(var(--top-bar-height) + 2.4rem) 1.6rem 3.2rem;
+}
+
+.actions {
+  margin-top: 2.4rem;
+  display: flex;
+  align-items: center;
+  column-gap: 0.8rem;
+  width: 100%;
+
+  & > * {
+    flex: 1;
+  }
+}

@@ -53,6 +53,10 @@ app-top-bar {
     &__title {
       color: theme-get("on-surface");
     }
+
+    &__actions :not(button.avatar) > svg path {
+      fill: theme-get("on-surface-variant");
+    }
   }
 
   & header.elevation {
@@ -77,22 +81,58 @@ app-icon-button {
   }
 }
 
-app-text-button {
+app-button {
   & .button--text {
     color: theme-get("primary");
+
+    &:hover {
+      background-color: rgba($color: theme-get("primary"), $alpha: 0.08);
+    }
+
+    &:focus,
+    &:active {
+      background-color: rgba($color: theme-get("primary"), $alpha: 0.12);
+    }
+
+    & svg path {
+      fill: theme-get("primary");
+    }
   }
 
-  & .button--text:hover {
-    background-color: rgba($color: theme-get("primary"), $alpha: 0.08);
+  & .button--outlined {
+    border: 0.1rem solid theme-get("outline");
+    color: theme-get("primary");
+
+    & svg path {
+      fill: theme-get("primary");
+    }
   }
 
-  & .button--text:focus,
-  & .button--text:active {
-    background-color: rgba($color: theme-get("primary"), $alpha: 0.12);
-  }
+  & .button--filled {
+    background-color: theme-get("primary");
+    color: theme-get("on-primary");
 
-  & .button--text svg path {
-    fill: theme-get("primary");
+    & svg path {
+      fill: theme-get("on-primary");
+    }
+  }
+}
+
+app-text-field {
+  & .text-field {
+    &__input {
+      border: 0.1rem solid theme-get("outline");
+      color: theme-get("on-surface");
+
+      &:focus {
+        border: 0.2rem solid theme-get("primary");
+        caret-color: theme-get("primary");
+      }
+    }
+
+    &__error {
+      color: theme-get("error");
+    }
   }
 }
 

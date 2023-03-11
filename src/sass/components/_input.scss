@@ -1,0 +1,18 @@
+input {
+  align-items: center;
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  height: 5.6rem;
+  padding: 0 1.6rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: inherit;
+    opacity: 0.38;
+  }
+}

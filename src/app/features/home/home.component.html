@@ -1,9 +1,10 @@
 <app-home-top-bar></app-home-top-bar>
 <main class="home">
-  <app-text-button
+  <app-button
     label="Ver actividad reciente"
     class="activity-button"
-  ></app-text-button>
+    [variant]="buttonVariant.TEXT"
+  ></app-button>
 
   <app-clients></app-clients>
   <app-home-cards></app-home-cards>

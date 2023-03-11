@@ -1,0 +1,49 @@
+@use "../../../../sass/abstracts/placeholders";
+
+%button {
+  @extend %ripple;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.8rem;
+  height: 4rem;
+  min-width: 4.8rem;
+  text-align: center;
+  border-radius: 2rem;
+  width: 100%;
+
+  & svg {
+    height: 1.8rem;
+    width: 1.8rem;
+  }
+}
+
+.button {
+  &--text {
+    @extend %button;
+
+    &:has(span:only-child) {
+      padding: 0 1.2rem;
+    }
+
+    &:not(:has(span:only-child)) {
+      padding-left: 1.2rem;
+      padding-right: 1.6rem;
+    }
+  }
+
+  &--outlined,
+  &--filled {
+    @extend %button;
+
+    &:has(span:only-child) {
+      padding: 0 2.4rem;
+    }
+
+    &:not(:has(span:only-child)) {
+      padding-left: 1.6rem;
+      padding-right: 2.4rem;
+    }
+  }
+}

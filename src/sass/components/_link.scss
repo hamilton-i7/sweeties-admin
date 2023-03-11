@@ -1,0 +1,9 @@
+@use "../base/typography";
+
+a {
+  @extend %label-l;
+
+  text-decoration: none;
+  outline: none;
+  padding: 0;
+}
