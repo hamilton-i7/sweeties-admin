@@ -1,0 +1,19 @@
+<div class="scrim" (click)="onClose()" *ngIf="show">
+  <aside class="dialog__container">
+    <ng-content></ng-content>
+    <h2 class="dialog__headline">{{ headline }}</h2>
+    <p class="dialog__text">{{ text }}</p>
+    <div class="dialog__actions">
+      <app-button
+        [label]="cancelText"
+        [variant]="buttonVariant.TEXT"
+        (btnClick)="onCancel()"
+      ></app-button>
+      <app-button
+        [label]="confirmText"
+        [variant]="buttonVariant.TEXT"
+        (btnClick)="onConfirm()"
+      ></app-button>
+    </div>
+  </aside>
+</div>

@@ -6,6 +6,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { SwitchComponent } from './components/switch/switch.component';
 import { RouterModule } from '@angular/router';
 import { TextFieldComponent } from './components/text-field/text-field.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { TextFieldComponent } from './components/text-field/text-field.component
     ButtonComponent,
     SwitchComponent,
     TextFieldComponent,
+    DialogComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -22,6 +24,7 @@ import { TextFieldComponent } from './components/text-field/text-field.component
     ButtonComponent,
     SwitchComponent,
     TextFieldComponent,
+    DialogComponent,
   ],
 })
 export class ShareModule {}
