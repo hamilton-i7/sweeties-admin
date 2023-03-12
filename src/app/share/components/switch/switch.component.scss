@@ -1,13 +1,21 @@
+@use "../../../../sass/base/typography";
+
 .switch {
   --switch-height: 3.2rem;
   --switch-width: 5.2rem;
 
-  display: block;
+  display: flex;
+  align-items: center;
+  column-gap: 0.8rem;
   user-select: none;
   position: relative;
   height: var(--switch-height);
-  width: var(--switch-width);
+  width: fit-content;
   -webkit-tap-highlight-color: transparent;
+
+  &__label {
+    @extend %body-l;
+  }
 
   & input {
     position: absolute;
@@ -15,14 +23,14 @@
     left: 0;
     opacity: 0;
     height: var(--switch-height);
-    width: var(--switch-width);
+    width: 100%;
     margin: 0;
     padding: 0;
   }
 
   & span.slider {
-    position: absolute;
     cursor: pointer;
+    position: relative;
     height: var(--switch-height);
     width: var(--switch-width);
     border-radius: 3.2rem;

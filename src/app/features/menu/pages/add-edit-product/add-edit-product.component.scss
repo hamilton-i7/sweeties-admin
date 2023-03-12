@@ -4,3 +4,18 @@
   flex-direction: column;
   row-gap: 0.8rem;
 }
+
+app-switch {
+  align-self: flex-end;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  column-gap: 0.8rem;
+  margin-top: 2.4rem;
+
+  & > * {
+    flex: 1;
+  }
+}

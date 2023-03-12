@@ -5,7 +5,38 @@
 ></app-add-edit-product-top-bar>
 <main class="add-edit-product">
   <app-file-field label="Imagen del producto"></app-file-field>
-  <app-text-field label="Nombre"></app-text-field>
-  <app-text-field label="Descripción" [multiline]="true"></app-text-field>
-  <app-text-field label="Precio" [options]="cleaveOptions"></app-text-field>
+  <app-text-field
+    label="Nombre"
+    [value]="name"
+    (valueChange)="onNameChange($event)"
+  ></app-text-field>
+  <app-text-field
+    label="Descripción"
+    variant="multiline"
+    [value]="description ?? ''"
+    (valueChange)="onDescriptionChange($event)"
+  ></app-text-field>
+  <app-text-field
+    label="Precio"
+    [options]="cleaveOptions"
+    placeholder="4.00"
+    (valueChange)="onPriceChange($event)"
+  ></app-text-field>
+  <app-text-field
+    variant="select"
+    label="Categoría"
+    [value]="category"
+    (valueChange)="onCategoryChange($event)"
+  ></app-text-field>
+  <app-switch label="Recomendado"></app-switch>
+  <div class="actions">
+    <app-button
+      [variant]="buttonVariant.OUTLINED"
+      label="Cancelar"
+    ></app-button>
+    <app-button
+      [variant]="buttonVariant.FILLED"
+      [label]="editVariant ? 'Actualizar' : 'Agregar'"
+    ></app-button>
+  </div>
 </main>

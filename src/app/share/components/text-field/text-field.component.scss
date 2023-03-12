@@ -20,3 +20,18 @@
     text-align: start;
   }
 }
+
+.select-wrapper {
+  position: relative;
+
+  & > .text-field__input {
+    padding-right: 4.8rem;
+  }
+}
+
+.select__arrow {
+  position: absolute;
+  right: 1.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+}

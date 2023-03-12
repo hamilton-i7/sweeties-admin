@@ -13,8 +13,8 @@ export class TextFieldComponent {
   @Input() placeholder = '';
   @Input() errorMessage = '';
   @Input() error = false;
-  @Input() multiline = false;
-  @Input() options?: CleaveOptions;
+  @Input() options: CleaveOptions = {};
+  @Input() variant: 'singleline' | 'multiline' | 'select' = 'singleline';
 
   onValueChange(value: string): void {
     this.valueChange.emit(value);

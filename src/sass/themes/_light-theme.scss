@@ -180,6 +180,10 @@ app-text-field {
     &__error {
       color: theme-get("error");
     }
+
+    & .select__arrow svg path {
+      fill: theme-get("on-surface-variant");
+    }
   }
 }
 
@@ -297,12 +301,12 @@ app-switch {
       background-color: theme-get("on-secondary");
     }
 
-    & input:not(:disabled):hover + span.slider::after {
+    & input:not(:disabled) + span.slider:hover::after {
       background-color: theme-get("on-surface-variant");
     }
 
-    & input:not(:disabled):hover + span.slider::before,
-    & input:not(:disabled):checked:hover + span.slider::before {
+    & input:not(:disabled) + span.slider:hover::before,
+    & input:not(:disabled):checked + span.slider:hover::before {
       background-color: rgba(
         $color: theme-get("on-surface-variant"),
         $alpha: 0.08

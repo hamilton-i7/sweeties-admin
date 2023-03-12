@@ -1,4 +1,13 @@
-input {
+input,
+textarea {
+  &::placeholder {
+    color: inherit;
+    opacity: 0.38;
+  }
+}
+
+input,
+select {
   align-items: center;
   background: none;
   border: none;
@@ -10,17 +19,19 @@ input {
   &:focus {
     outline: none;
   }
-
-  &::placeholder {
-    color: inherit;
-    opacity: 0.38;
-  }
 }
 
 textarea {
   padding: 1.6rem;
+  border: none;
+  outline: none;
 
   &:focus {
     outline: none;
   }
+}
+
+select {
+  width: 100%;
+  appearance: none;
 }
