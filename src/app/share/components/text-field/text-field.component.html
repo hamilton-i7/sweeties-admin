@@ -1,14 +1,26 @@
 <div class="text-field">
   <label class="text-field__label">
     <span class="text-field__label-text">{{ label }}</span>
-    <input
-      type="text"
+    <textarea
+      *ngIf="multiline; else singleLine"
+      rows="5"
       class="text-field__input"
       #inputBox
-      [value]="value"
       (input)="onValueChange(inputBox.value)"
       [placeholder]="placeholder"
-    />
+      >{{ value }}</textarea
+    >
+    <ng-template #singleLine>
+      <input
+        type="text"
+        class="text-field__input"
+        #inputBox
+        [value]="value"
+        (input)="onValueChange(inputBox.value)"
+        [placeholder]="placeholder"
+        [cleave]="options ?? null"
+      />
+    </ng-template>
   </label>
   <p class="text-field__error">{{ error ? errorMessage : "&nbsp;" }}</p>
 </div>

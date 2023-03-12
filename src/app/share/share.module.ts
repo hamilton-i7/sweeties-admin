@@ -9,6 +9,7 @@ import { TextFieldComponent } from './components/text-field/text-field.component
 import { DialogComponent } from './components/dialog/dialog.component';
 import { ClickStopPropagationDirective } from './directives/click-stop-propagation.directive';
 import { FileFieldComponent } from './components/file-field/file-field.component';
+import { NgxCleaveDirectiveModule } from 'ngx-cleave-directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { FileFieldComponent } from './components/file-field/file-field.component
     ClickStopPropagationDirective,
     FileFieldComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NgxCleaveDirectiveModule],
   exports: [
     TopBarComponent,
     IconButtonComponent,

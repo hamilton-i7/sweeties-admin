@@ -1,3 +1,6 @@
 .add-edit-product {
   padding: calc(var(--top-bar-height) + 2.4rem) 1.6rem 3.2rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.8rem;
 }

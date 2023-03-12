@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CleaveOptions } from 'cleave.js/options';
 
 @Component({
   selector: 'app-text-field',
@@ -12,6 +13,8 @@ export class TextFieldComponent {
   @Input() placeholder = '';
   @Input() errorMessage = '';
   @Input() error = false;
+  @Input() multiline = false;
+  @Input() options?: CleaveOptions;
 
   onValueChange(value: string): void {
     this.valueChange.emit(value);

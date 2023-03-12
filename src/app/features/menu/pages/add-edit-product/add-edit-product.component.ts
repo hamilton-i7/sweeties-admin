@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CleaveOptions } from 'cleave.js/options';
 
 @Component({
   selector: 'app-add-edit-product',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AddEditProductComponent {
   editVariant = false;
+  cleaveOptions: CleaveOptions = {
+    numeral: true,
+    numeralDecimalMark: '.',
+    delimiter: ',',
+  };
 
   onClose(): void {}
 

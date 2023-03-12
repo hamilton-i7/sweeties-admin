@@ -16,3 +16,11 @@ input {
     opacity: 0.38;
   }
 }
+
+textarea {
+  padding: 1.6rem;
+
+  &:focus {
+    outline: none;
+  }
+}
