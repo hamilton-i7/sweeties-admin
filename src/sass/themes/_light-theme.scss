@@ -115,6 +115,15 @@ app-button {
     & svg path {
       fill: theme-get("on-primary");
     }
+
+    &.disabled {
+      background-color: rgba($color: theme-get("on-surface"), $alpha: 0.12);
+      color: rgba($color: theme-get("on-surface"), $alpha: 0.38);
+
+      & svg path {
+        fill: rgba($color: theme-get("on-surface"), $alpha: 0.38);
+      }
+    }
   }
 }
 

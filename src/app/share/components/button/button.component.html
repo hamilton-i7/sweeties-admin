@@ -1,4 +1,15 @@
-<a *ngIf="href" [routerLink]="href" [ngClass]="variantClass">
+<a
+  *ngIf="href"
+  [routerLink]="href"
+  [ngClass]="{
+    'button--filled': variant === buttonVariant.FILLED,
+    'button--tonal': variant === buttonVariant.TONAL,
+    'button--outlined': variant === buttonVariant.OUTLINED,
+    'button--text': variant === buttonVariant.TEXT,
+    disabled: disabled,
+    ripple: !disabled
+  }"
+>
   <ng-container *ngTemplateOutlet="content"></ng-container>
 </a>
 
@@ -6,7 +17,14 @@
   *ngIf="!href"
   type="button"
   class="button"
-  [ngClass]="variantClass"
+  [ngClass]="{
+    'button--filled': variant === buttonVariant.FILLED,
+    'button--tonal': variant === buttonVariant.TONAL,
+    'button--outlined': variant === buttonVariant.OUTLINED,
+    'button--text': variant === buttonVariant.TEXT,
+    disabled: disabled,
+    ripple: !disabled
+  }"
   (click)="onClick()"
 >
   <ng-container *ngTemplateOutlet="content"></ng-container>
