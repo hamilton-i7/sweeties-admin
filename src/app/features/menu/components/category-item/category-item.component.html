@@ -1,4 +1,8 @@
-<a class="category" *ngIf="category" [routerLink]="category.id">
+<a
+  class="category"
+  *ngIf="category"
+  [routerLink]="'/menu/category/' + category.id"
+>
   <app-icon-button>
     <svg
       class="category__leading-icon"

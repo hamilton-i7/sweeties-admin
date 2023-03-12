@@ -1,5 +1,4 @@
-import { Location } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-add-edit-category-top-bar',
@@ -8,10 +7,14 @@ import { Component, Input } from '@angular/core';
 })
 export class AddEditCategoryTopBarComponent {
   @Input() editVariant = false;
-
-  constructor(private location: Location) {}
+  @Output() closeClick = new EventEmitter<void>();
+  @Output() deleteClick = new EventEmitter<void>();
 
   onClose(): void {
-    this.location.back();
+    this.closeClick.emit();
+  }
+
+  onDelete(): void {
+    this.deleteClick.emit();
   }
 }

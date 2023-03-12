@@ -1,5 +1,7 @@
 <app-add-edit-category-top-bar
   [editVariant]="editVariant"
+  (closeClick)="onClose()"
+  (deleteClick)="onDelete()"
 ></app-add-edit-category-top-bar>
 <main class="add-edit-category">
   <app-text-field
@@ -17,6 +19,14 @@
       [label]="editVariant ? 'Actualizar' : 'Agregar'"
       [variant]="buttonVariant.FILLED"
       (btnClick)="onConfirm()"
+      [disabled]="(loading$ | async) ?? false"
     ></app-button>
   </div>
 </main>
+
+<app-delete-category-dialog
+  [show]="(showDeleteDialog$ | async) ?? false"
+  (closeClick)="onCloseDialog()"
+  (cancelClick)="onCloseDialog()"
+  (confirmClick)="onDeleteConfirm()"
+></app-delete-category-dialog>

@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import {
   collectionData,
+  deleteDoc,
   doc,
   Firestore,
   getDoc,
@@ -55,13 +56,24 @@ export class CategoryService {
   }
 
   updateCategory(category: ICategory): Observable<RequestState<void>> {
-    const ref = doc(
-      this.firestore,
-      `${PATH_CATEGORIES}/${category.id}`
-    ).withConverter(categoryConverter);
+    const ref = doc(this.firestore, PATH_CATEGORIES, category.id).withConverter(
+      categoryConverter
+    );
     return from(updateDoc(ref, category)).pipe(
       map(() => ({ loading: false })),
-      catchError(this.handleError<void>('updateCategory'))
+      catchError(this.handleError<void>('updateCategory')),
+      startWith({ loading: true })
+    );
+  }
+
+  deleteCategory(id: string): Observable<RequestState<void>> {
+    const ref = doc(this.firestore, PATH_CATEGORIES, id).withConverter(
+      categoryConverter
+    );
+    return from(deleteDoc(ref)).pipe(
+      map(() => ({ loading: false })),
+      catchError(this.handleError<void>('deleteCategory')),
+      startWith({ loading: true })
     );
   }
 

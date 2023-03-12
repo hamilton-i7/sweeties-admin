@@ -7,6 +7,7 @@ import { SwitchComponent } from './components/switch/switch.component';
 import { RouterModule } from '@angular/router';
 import { TextFieldComponent } from './components/text-field/text-field.component';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { ClickStopPropagationDirective } from './directives/click-stop-propagation.directive';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     SwitchComponent,
     TextFieldComponent,
     DialogComponent,
+    ClickStopPropagationDirective,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -25,6 +27,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     SwitchComponent,
     TextFieldComponent,
     DialogComponent,
+    ClickStopPropagationDirective,
   ],
 })
 export class ShareModule {}

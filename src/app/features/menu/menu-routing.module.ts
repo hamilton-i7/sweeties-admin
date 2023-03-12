@@ -5,7 +5,7 @@ import { MenuComponent } from './pages/menu/menu.component';
 
 const routes: Routes = [
   {
-    path: 'menu/:id',
+    path: 'menu/category/:id',
     component: AddEditCategoryComponent,
   },
   {

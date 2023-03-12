@@ -6,7 +6,7 @@ import { CategoryService } from '../../services/category.service';
 import { v4 as uuidv4 } from 'uuid';
 import { Title } from '@angular/platform-browser';
 import { TITLE_PREFIX } from '../../../../core/constants/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -19,21 +19,23 @@ export class AddEditCategoryComponent implements OnInit {
 
   name = '';
   editVariant = false;
-
   loading$ = new BehaviorSubject(false);
   category?: ICategory;
+  showDeleteDialog$ = new BehaviorSubject(false);
 
   constructor(
     private location: Location,
     private categoryService: CategoryService,
     private title: Title,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     const categoryId = this.activatedRoute.snapshot.paramMap.get('id');
     if (!categoryId) return;
 
+    this.editVariant = true;
     this.categoryService.getCategory(categoryId).subscribe((state) => {
       if (state.loading) {
         this.loading$.next(true);
@@ -41,18 +43,42 @@ export class AddEditCategoryComponent implements OnInit {
       }
 
       this.setupData(state.value);
+      this.loading$.next(false);
     });
   }
 
   private setupData(category?: ICategory): void {
     if (!category) return;
 
-    this.editVariant = true;
     this.category = category;
     this.name = category.name;
     this.title.setTitle(
       this.name ? `${TITLE_PREFIX} | ${this.name}` : TITLE_PREFIX
     );
+  }
+
+  onClose(): void {
+    this.location.back();
+  }
+
+  onCloseDialog(): void {
+    this.showDeleteDialog$.next(false);
+  }
+
+  onDelete(): void {
+    this.showDeleteDialog$.next(true);
+  }
+
+  onDeleteConfirm(): void {
+    if (!this.category) return;
+
+    this.categoryService.deleteCategory(this.category.id).subscribe((state) => {
+      this.loading$.next(state.loading);
+
+      if (!state.loading && !state.error) {
+        this.router.navigate(['/menu'], { replaceUrl: true });
+      }
+    });
   }
 
   onNameChange(name: string): void {

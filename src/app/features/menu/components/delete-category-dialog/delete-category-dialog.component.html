@@ -1,0 +1,21 @@
+<app-dialog
+  headline="¿Eliminar categoría?"
+  text="Esta acción es irreversible. Al eliminar la categoría, se eliminarán todos los productos que pertenezcan a ella."
+  [show]="show"
+  confirmText="Eliminar"
+  (closeClick)="onClose()"
+  (cancelClick)="onCancel()"
+  (confirmClick)="onConfirm()"
+>
+  <svg
+    width="24"
+    height="25"
+    viewBox="0 0 24 25"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 6.28626L19.53 19.2963H4.47L12 6.28626ZM2.74 18.2963C1.97 19.6263 2.93 21.2963 4.47 21.2963H19.53C21.07 21.2963 22.03 19.6263 21.26 18.2963L13.73 5.28626C12.96 3.95626 11.04 3.95626 10.27 5.28626L2.74 18.2963ZM11 11.2963V13.2963C11 13.8463 11.45 14.2963 12 14.2963C12.55 14.2963 13 13.8463 13 13.2963V11.2963C13 10.7463 12.55 10.2963 12 10.2963C11.45 10.2963 11 10.7463 11 11.2963ZM11 16.2963H13V18.2963H11V16.2963Z"
+    />
+  </svg>
+</app-dialog>
