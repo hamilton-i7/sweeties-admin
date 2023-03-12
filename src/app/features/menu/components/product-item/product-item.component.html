@@ -18,6 +18,7 @@
   </figure>
   <h2 class="product__name">{{ product.name }}</h2>
   <app-switch
+    appClickStopPropagation
     [checked]="product.active"
     (checkedChange)="onActiveToggle($event)"
   ></app-switch>

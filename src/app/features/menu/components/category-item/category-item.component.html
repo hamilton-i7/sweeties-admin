@@ -19,6 +19,7 @@
   </app-icon-button>
   <h2 class="category__name">{{ category.name }}</h2>
   <app-switch
+    appClickStopPropagation
     [checked]="category.active"
     (checkedChange)="onActiveToggle($event)"
   ></app-switch>
