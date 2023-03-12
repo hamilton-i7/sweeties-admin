@@ -16,6 +16,8 @@ export class AddEditProductComponent {
     numeralDecimalMark: '.',
     delimiter: ',',
   };
+
+  imgPath = '';
   name = '';
   description: string | null = null;
   price: string | null = null;
@@ -24,6 +26,11 @@ export class AddEditProductComponent {
   onClose(): void {}
 
   onDelete(): void {}
+
+  onImageChange(path: string): void {
+    console.log(path.replace('C:\\fakepath\\', ''));
+    this.imgPath = path;
+  }
 
   onDescriptionChange(description: string): void {
     this.description = description;

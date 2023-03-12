@@ -4,7 +4,12 @@
   (deleteClick)="onDelete()"
 ></app-add-edit-product-top-bar>
 <main class="add-edit-product">
-  <app-file-field label="Imagen del producto"></app-file-field>
+  <app-file-field
+    label="Imagen del producto"
+    buttonLabel="Elegir imagen"
+    [value]="imgPath || 'Ninguna imagen seleccionada'"
+    (valueChange)="onImageChange($event)"
+  ></app-file-field>
   <app-text-field
     label="Nombre"
     [value]="name"

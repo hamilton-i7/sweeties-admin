@@ -122,12 +122,12 @@ app-button {
     color: theme-get("on-primary");
 
     &:hover {
-      background-color: #735eab;
+      background-color: #965093;
     }
 
     &:focus,
     &:active {
-      background-color: #7965af;
+      background-color: #9b5898;
     }
 
     & svg path {
@@ -183,26 +183,6 @@ app-text-field {
 
     & .select__arrow svg path {
       fill: theme-get("on-surface-variant");
-    }
-  }
-}
-
-app-file-field {
-  & .file-field {
-    &__input::file-selector-button {
-      background-color: theme-get("secondary-container");
-      color: theme-get("on-secondary-container");
-
-      &:hover {
-        background-color: #d1d0ee;
-        box-shadow: 0 0.1rem 0.2rem rgba($color: #000000, $alpha: 0.3),
-          0 0.1rem 0.3rem 0.1rem rgba($color: #000000, $alpha: 0.15);
-      }
-
-      &:focus,
-      &:active {
-        background-color: #c9c8e6;
-      }
     }
   }
 }

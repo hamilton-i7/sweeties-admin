@@ -1,14 +1,20 @@
 <div class="file-field">
-  <label for="" class="file-field__label">
-    <div class="file-field__label-text">{{ label }}</div>
-    <input
-      type="file"
-      accept="image/png, image/jpeg"
-      class="file-field__input"
-      #inputBox
-      [value]="value"
-      (input)="onValueChange(inputBox.value)"
-    />
-    <p class="file-field__error">{{ error ? errorMessage : "&nbsp;" }}</p>
-  </label>
+  <label class="file-field__label" for="file-input">{{ label }}</label>
+  <div class="file-field__input" (click)="onInputClick(inputBox)">
+    <app-button
+      [variant]="buttonVariant.TONAL"
+      [label]="buttonLabel"
+    ></app-button>
+    <div class="file-field__name">{{ value }}</div>
+  </div>
+
+  <input
+    id="file-input"
+    type="file"
+    accept="image/png, image/jpeg"
+    #inputBox
+    (input)="onValueChange(inputBox.files?.[0]?.name ?? '')"
+    class="file-field__default-input"
+  />
+  <p class="file-field__error">{{ error ? errorMessage : "&nbsp;" }}</p>
 </div>
