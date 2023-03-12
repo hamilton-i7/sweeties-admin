@@ -13,6 +13,8 @@ import { AddEditCategoryTopBarComponent } from './components/add-edit-category-t
 import { TitleStrategy } from '@angular/router';
 import { AppTitlePrefix } from '../../core/injectables/app-title-prefix';
 import { DeleteCategoryDialogComponent } from './components/delete-category-dialog/delete-category-dialog.component';
+import { AddEditProductComponent } from './pages/add-edit-product/add-edit-product.component';
+import { AddEditProductTopBarComponent } from './components/add-edit-product-top-bar/add-edit-product-top-bar.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { DeleteCategoryDialogComponent } from './components/delete-category-dial
     AddEditCategoryComponent,
     AddEditCategoryTopBarComponent,
     DeleteCategoryDialogComponent,
+    AddEditProductComponent,
+    AddEditProductTopBarComponent,
   ],
   imports: [CommonModule, MenuRoutingModule, ShareModule],
   exports: [MenuComponent],

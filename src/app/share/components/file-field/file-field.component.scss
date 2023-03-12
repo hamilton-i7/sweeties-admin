@@ -1,0 +1,38 @@
+@use "../../../../sass/base/typography";
+@use "../../../../sass/abstracts/placeholders";
+
+.file-field {
+  &__label-text {
+    @extend %body-l;
+    margin-bottom: 0.4rem;
+  }
+
+  &__input {
+    @extend %body-l;
+
+    cursor: pointer;
+    border-radius: 0.4rem;
+    width: 100%;
+    padding: 0;
+
+    &::file-selector-button {
+      @extend %ripple;
+      @extend %label-l;
+
+      cursor: pointer;
+      border: none;
+      outline: none;
+      height: 4rem;
+      padding: 0 2.4rem;
+      border-radius: 10rem;
+    }
+  }
+
+  &__error {
+    @extend %label-s;
+
+    margin-left: 1.6rem;
+    margin-top: 0.4rem;
+    text-align: start;
+  }
+}

@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-add-edit-category-top-bar',
-  templateUrl: './add-edit-category-top-bar.component.html',
+  selector: 'app-add-edit-product-top-bar',
+  templateUrl: './add-edit-product-top-bar.component.html',
 })
-export class AddEditCategoryTopBarComponent {
+export class AddEditProductTopBarComponent {
   @Input() editVariant = false;
   @Output() closeClick = new EventEmitter<void>();
   @Output() deleteClick = new EventEmitter<void>();

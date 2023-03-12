@@ -1,0 +1,14 @@
+<div class="file-field">
+  <label for="" class="file-field__label">
+    <div class="file-field__label-text">{{ label }}</div>
+    <input
+      type="file"
+      accept="image/png, image/jpeg"
+      class="file-field__input"
+      #inputBox
+      [value]="value"
+      (input)="onValueChange(inputBox.value)"
+    />
+    <p class="file-field__error">{{ error ? errorMessage : "&nbsp;" }}</p>
+  </label>
+</div>
