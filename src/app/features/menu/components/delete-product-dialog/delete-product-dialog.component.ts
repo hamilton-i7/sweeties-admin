@@ -1,10 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-delete-category-dialog',
-  templateUrl: './delete-category-dialog.component.html',
+  selector: 'app-delete-product-dialog',
+  templateUrl: './delete-product-dialog.component.html',
 })
-export class DeleteCategoryDialogComponent {
+export class DeleteProductDialogComponent {
   @Input() show = false;
 
   @Output() closeClick = new EventEmitter<void>();

@@ -9,7 +9,7 @@ import { IProduct } from '../../../../core/models/product';
 import { CategoryService } from '../../services/category.service';
 import { ICategory } from '../../../../core/models/category';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TITLE_PREFIX } from '../../../../core/constants/common';
 
 @Component({
@@ -50,7 +50,8 @@ export class AddEditProductComponent implements OnInit {
     private categoryService: CategoryService,
     private location: Location,
     private title: Title,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -99,8 +100,24 @@ export class AddEditProductComponent implements OnInit {
     this.location.back();
   }
 
+  onCloseDialog(): void {
+    this.showDeleteDialog$.next(false);
+  }
+
   onDelete(): void {
     this.showDeleteDialog$.next(true);
+  }
+
+  onDeleteConfirm(): void {
+    if (!this.product) return;
+
+    this.productService.deleteProduct(this.product.id).subscribe((state) => {
+      this.loading$.next(state.loading);
+
+      if (!state.loading && !state.error) {
+        this.router.navigate(['/menu'], { replaceUrl: true });
+      }
+    });
   }
 
   onImageChange(file?: File): void {

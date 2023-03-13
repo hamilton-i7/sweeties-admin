@@ -27,7 +27,6 @@
   &__headline {
     @extend %headline-s;
     align-self: center;
-    margin-bottom: 1.6rem;
     width: 100%;
 
     &:not(:first-child) {
@@ -38,6 +37,7 @@
 
   &__text {
     @extend %body-m;
+    margin-top: 1.6rem;
     margin-bottom: 2.4rem;
   }
 

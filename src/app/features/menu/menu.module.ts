@@ -16,6 +16,7 @@ import { DeleteCategoryDialogComponent } from './components/delete-category-dial
 import { AddEditProductComponent } from './pages/add-edit-product/add-edit-product.component';
 import { AddEditProductTopBarComponent } from './components/add-edit-product-top-bar/add-edit-product-top-bar.component';
 import { ProductImageComponent } from './components/product-image/product-image.component';
+import { DeleteProductDialogComponent } from './components/delete-product-dialog/delete-product-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ProductImageComponent } from './components/product-image/product-image.
     AddEditProductComponent,
     AddEditProductTopBarComponent,
     ProductImageComponent,
+    DeleteProductDialogComponent,
   ],
   imports: [CommonModule, MenuRoutingModule, ShareModule],
   exports: [MenuComponent],

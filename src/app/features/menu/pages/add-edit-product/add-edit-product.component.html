@@ -61,3 +61,10 @@
     ></app-button>
   </div>
 </main>
+
+<app-delete-product-dialog
+  [show]="(showDeleteDialog$ | async) ?? false"
+  (closeClick)="onCloseDialog()"
+  (cancelClick)="onCloseDialog()"
+  (confirmClick)="onDeleteConfirm()"
+></app-delete-product-dialog>

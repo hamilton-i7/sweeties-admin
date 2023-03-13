@@ -1,7 +1,7 @@
 <div class="scrim" (click)="onClose()" *ngIf="show">
   <aside class="dialog__container" appClickStopPropagation>
     <ng-content></ng-content>
-    <h2 class="dialog__headline">{{ headline }}</h2>
+    <h2 class="dialog__headline" *ngIf="headline">{{ headline }}</h2>
     <p class="dialog__text">{{ text }}</p>
     <div class="dialog__actions">
       <app-button

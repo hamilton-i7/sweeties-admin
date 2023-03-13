@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   collectionData,
+  deleteDoc,
   doc,
   Firestore,
   getDoc,
@@ -110,6 +111,17 @@ export class ProductService {
           startWith({ loading: true })
         );
       })
+    );
+  }
+
+  deleteProduct(id: string): Observable<RequestState<void>> {
+    const ref = doc(this.firestore, PATH_PRODUCTS, id).withConverter(
+      productConverter
+    );
+    return from(deleteDoc(ref)).pipe(
+      map(() => ({ loading: false })),
+      catchError(this.handleError<void>('deleteProduct')),
+      startWith({ loading: true })
     );
   }
 
