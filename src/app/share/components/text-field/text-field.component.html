@@ -9,9 +9,7 @@
           [value]="value"
           (input)="onValueChange(inputBox.value)"
         >
-          <option value="" disabled selected>Elegir categoría</option>
-          <option value="helados">Helados</option>
-          <option value="batidos">Batidos</option>
+          <ng-content></ng-content>
         </select>
         <span class="select__arrow">
           <svg

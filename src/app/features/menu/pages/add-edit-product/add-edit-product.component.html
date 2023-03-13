@@ -7,13 +7,17 @@
   <app-file-field
     label="Imagen del producto"
     buttonLabel="Elegir imagen"
-    [value]="imgPath || 'Ninguna imagen seleccionada'"
+    [value]="img?.name ?? 'Ninguna imagen seleccionada'"
     (valueChange)="onImageChange($event)"
+    [error]="(showImgError$ | async) ?? false"
+    errorMessage="Ninguna imagen seleccionada"
   ></app-file-field>
   <app-text-field
     label="Nombre"
     [value]="name"
     (valueChange)="onNameChange($event)"
+    [error]="(showNameError$ | async) ?? false"
+    errorMessage="No puede estar vacío"
   ></app-text-field>
   <app-text-field
     label="Descripción"
@@ -30,18 +34,31 @@
   <app-text-field
     variant="select"
     label="Categoría"
-    [value]="category"
+    [value]="selectedCategory?.id ?? ''"
     (valueChange)="onCategoryChange($event)"
-  ></app-text-field>
-  <app-switch label="Recomendado"></app-switch>
+    [error]="(showCategoryError$ | async) ?? false"
+    errorMessage="Ninguna categoría seleccionada"
+  >
+    <option value="" disabled selected>Elegir categoría</option>
+    <option [value]="category.id" *ngFor="let category of categories$ | async">
+      {{ category.name }}
+    </option>
+  </app-text-field>
+  <app-switch
+    label="Recomendado"
+    [checked]="(recommended$ | async) ?? false"
+    (checkedChange)="onRecommendedToggle()"
+  ></app-switch>
   <div class="actions">
     <app-button
       [variant]="buttonVariant.OUTLINED"
       label="Cancelar"
+      (btnClick)="onCancel()"
     ></app-button>
     <app-button
       [variant]="buttonVariant.FILLED"
       [label]="editVariant ? 'Actualizar' : 'Agregar'"
+      (btnClick)="onConfirm()"
     ></app-button>
   </div>
 </main>

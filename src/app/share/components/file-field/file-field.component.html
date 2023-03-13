@@ -13,7 +13,7 @@
     type="file"
     accept="image/png, image/jpeg"
     #inputBox
-    (input)="onValueChange(inputBox.files?.[0]?.name ?? '')"
+    (input)="onValueChange(inputBox.files?.[0])"
     class="file-field__default-input"
   />
   <p class="file-field__error">{{ error ? errorMessage : "&nbsp;" }}</p>

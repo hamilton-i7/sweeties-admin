@@ -10,18 +10,17 @@ export class FileFieldComponent {
   public buttonVariant: typeof ButtonVariant = ButtonVariant;
 
   @Input() value = '';
-  @Output() valueChange = new EventEmitter<string>();
+  @Output() valueChange = new EventEmitter<File | undefined>();
   @Input() label = '';
   @Input() buttonLabel = '';
   @Input() errorMessage = '';
   @Input() error = false;
 
-  onValueChange(value: string): void {
-    this.valueChange.emit(value);
+  onValueChange(file?: File): void {
+    this.valueChange.emit(file);
   }
 
   onInputClick(input: HTMLInputElement): void {
-    console.log('IT WORKS');
     input.click();
   }
 }

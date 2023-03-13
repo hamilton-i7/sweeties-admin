@@ -22,6 +22,8 @@ export class AddEditCategoryComponent implements OnInit {
   loading$ = new BehaviorSubject(false);
   category?: ICategory;
   showDeleteDialog$ = new BehaviorSubject(false);
+  enableLiveFeedback = false;
+  showError$ = new BehaviorSubject(false);
 
   constructor(
     private location: Location,
@@ -83,6 +85,9 @@ export class AddEditCategoryComponent implements OnInit {
 
   onNameChange(name: string): void {
     this.name = name;
+    if (this.enableLiveFeedback) {
+      this.showError$.next(name.trim().length === 0);
+    }
   }
 
   onCancel(): void {
@@ -98,7 +103,11 @@ export class AddEditCategoryComponent implements OnInit {
   }
 
   onAdd(): void {
-    if (!this.isValidName()) return;
+    if (!this.isValidName()) {
+      this.enableLiveFeedback = true;
+      this.showError$.next(true);
+      return;
+    }
 
     const now = new Date();
     const category: ICategory = {
@@ -117,7 +126,11 @@ export class AddEditCategoryComponent implements OnInit {
   }
 
   onUpdate(): void {
-    if (!this.isValidName()) return;
+    if (!this.isValidName()) {
+      this.enableLiveFeedback = true;
+      this.showError$.next(true);
+      return;
+    }
     if (!this.category) return;
 
     const now = new Date();

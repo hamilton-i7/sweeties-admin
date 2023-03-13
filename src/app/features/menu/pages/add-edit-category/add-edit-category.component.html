@@ -8,6 +8,8 @@
     label="Nombre"
     [value]="name"
     (valueChange)="onNameChange($event)"
+    [error]="(showError$ | async) ?? false"
+    errorMessage="No puede estar vacío"
   ></app-text-field>
   <div class="actions">
     <app-button

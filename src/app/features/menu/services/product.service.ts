@@ -3,11 +3,32 @@ import {
   collectionData,
   doc,
   Firestore,
+  setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
+import {
+  getDownloadURL,
+  ref,
+  Storage,
+  uploadBytes,
+  StorageReference,
+  UploadResult,
+} from '@angular/fire/storage';
 import { collection, FirestoreError } from '@firebase/firestore';
-import { Observable, map, catchError, startWith, of, from } from 'rxjs';
-import { PATH_PRODUCTS } from '../../../core/constants/product';
+import {
+  Observable,
+  map,
+  catchError,
+  startWith,
+  of,
+  from,
+  mergeMap,
+  combineLatest,
+} from 'rxjs';
+import {
+  PATH_PRODUCTS,
+  PATH_STORAGE_PRODUCTS,
+} from '../../../core/constants/product';
 import { productConverter } from '../../../core/converters/product';
 import { IProduct } from '../../../core/models/product';
 import { RequestState } from '../../../core/utils/request';
@@ -16,7 +37,7 @@ import { RequestState } from '../../../core/utils/request';
   providedIn: 'root',
 })
 export class ProductService {
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private storage: Storage) {}
 
   getProducts(): Observable<RequestState<IProduct[]>> {
     const ref = collection(this.firestore, PATH_PRODUCTS).withConverter(
@@ -29,6 +50,27 @@ export class ProductService {
     );
   }
 
+  addProduct(product: IProduct, image: File): Observable<RequestState<void>> {
+    const ref = doc(this.firestore, PATH_PRODUCTS, product.id).withConverter(
+      productConverter
+    );
+    return this.uploadImage(image).pipe(
+      mergeMap((result) => this.getImageUrl(result.ref)),
+      mergeMap((imgUrl) => {
+        const finalProduct: IProduct = {
+          ...product,
+          imgPath: `${PATH_STORAGE_PRODUCTS}/${image.name}`,
+          imgUrl,
+        };
+        return from(setDoc(ref, finalProduct)).pipe(
+          map(() => ({ loading: false })),
+          catchError(this.handleError<void>('addProduct')),
+          startWith({ loading: true })
+        );
+      })
+    );
+  }
+
   updateProduct(product: IProduct): Observable<RequestState<void>> {
     const ref = doc(
       this.firestore,
@@ -38,6 +80,15 @@ export class ProductService {
       map(() => ({ loading: false, value: undefined })),
       catchError(this.handleError<void>('updateProduct'))
     );
+  }
+
+  private getImageUrl(ref: StorageReference): Observable<string> {
+    return from(getDownloadURL(ref));
+  }
+
+  private uploadImage(image: File): Observable<UploadResult> {
+    const imgRef = ref(this.storage, `${PATH_STORAGE_PRODUCTS}/${image.name}`);
+    return from(uploadBytes(imgRef, image));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

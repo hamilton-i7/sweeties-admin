@@ -14,6 +14,7 @@ export class TextFieldComponent {
   @Input() errorMessage = '';
   @Input() error = false;
   @Input() options: CleaveOptions = {};
+  @Input() selectOptions: unknown[] = [];
   @Input() variant: 'singleline' | 'multiline' | 'select' = 'singleline';
 
   onValueChange(value: string): void {

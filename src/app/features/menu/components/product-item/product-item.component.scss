@@ -16,6 +16,8 @@
     overflow: hidden;
     margin-left: 1.2rem;
     margin-right: 0.8rem;
+    display: grid;
+    place-items: center;
   }
 
   &__img {
