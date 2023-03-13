@@ -1,4 +1,4 @@
-<li class="product" *ngIf="product">
+<a class="product" *ngIf="product" [routerLink]="'/menu/product/' + product.id">
   <app-icon-button>
     <svg
       class="product__leading-icon"
@@ -22,4 +22,4 @@
     [checked]="product.active"
     (checkedChange)="onActiveToggle($event)"
   ></app-switch>
-</li>
+</a>

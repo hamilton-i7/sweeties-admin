@@ -19,6 +19,10 @@ const routes: Routes = [
     component: AddEditProductComponent,
     title: 'Agregar Producto',
   },
+  {
+    path: 'menu/product/:id',
+    component: AddEditProductComponent,
+  },
   { path: 'menu', component: MenuComponent, title: 'Menú' },
 ];
 

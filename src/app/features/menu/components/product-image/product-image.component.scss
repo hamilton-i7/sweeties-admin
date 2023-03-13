@@ -1,0 +1,41 @@
+@use "../../../../../sass/base/typography";
+
+.product-img {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.4rem;
+
+  &__container {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 25rem;
+    width: 25rem;
+    background: center / cover;
+    overflow: hidden;
+    border-radius: 1.2rem;
+  }
+
+  &__placeholder {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    border-radius: inherit;
+  }
+
+  &__placeholder-text {
+    @extend %body-m;
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  &__error {
+    @extend %label-s;
+  }
+}

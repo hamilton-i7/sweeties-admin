@@ -1,0 +1,19 @@
+<div class="product-img">
+  <label
+    class="product-img__container"
+    [ngStyle]="{ backgroundImage: 'url(' + image + ')' }"
+  >
+    <div class="product-img__placeholder" *ngIf="!image">
+      <p class="product-img__placeholder-text">Selecciona una imagen</p>
+    </div>
+    <input
+      id="file-input"
+      type="file"
+      accept="image/png, image/jpeg"
+      #inputBox
+      (input)="onValueChange(inputBox.files?.[0])"
+      class="product-img__input"
+    />
+  </label>
+  <p class="product-img__error">{{ error ? errorMessage : "&nbsp;" }}</p>
+</div>

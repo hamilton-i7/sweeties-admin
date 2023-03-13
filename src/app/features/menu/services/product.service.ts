@@ -3,6 +3,7 @@ import {
   collectionData,
   doc,
   Firestore,
+  getDoc,
   setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
@@ -23,7 +24,6 @@ import {
   of,
   from,
   mergeMap,
-  combineLatest,
 } from 'rxjs';
 import {
   PATH_PRODUCTS,
@@ -50,6 +50,17 @@ export class ProductService {
     );
   }
 
+  getProduct(id: string): Observable<RequestState<IProduct | undefined>> {
+    const ref = doc(this.firestore, PATH_PRODUCTS, id).withConverter(
+      productConverter
+    );
+    return from(getDoc(ref)).pipe(
+      map((docSnap) => ({ loading: false, value: docSnap.data() })),
+      catchError(this.handleError<IProduct | undefined>('getProduct')),
+      startWith({ loading: true })
+    );
+  }
+
   addProduct(product: IProduct, image: File): Observable<RequestState<void>> {
     const ref = doc(this.firestore, PATH_PRODUCTS, product.id).withConverter(
       productConverter
@@ -71,14 +82,34 @@ export class ProductService {
     );
   }
 
-  updateProduct(product: IProduct): Observable<RequestState<void>> {
-    const ref = doc(
-      this.firestore,
-      `${PATH_PRODUCTS}/${product.id}`
-    ).withConverter(productConverter);
-    return from(updateDoc(ref, product)).pipe(
-      map(() => ({ loading: false, value: undefined })),
-      catchError(this.handleError<void>('updateProduct'))
+  updateProduct(
+    product: IProduct,
+    image?: File
+  ): Observable<RequestState<void>> {
+    const ref = doc(this.firestore, PATH_PRODUCTS, product.id).withConverter(
+      productConverter
+    );
+
+    if (!image) {
+      return from(updateDoc(ref, product)).pipe(
+        map(() => ({ loading: false })),
+        catchError(this.handleError<void>('updateProduct'))
+      );
+    }
+    return this.uploadImage(image).pipe(
+      mergeMap((result) => this.getImageUrl(result.ref)),
+      mergeMap((imgUrl) => {
+        const finalProduct: IProduct = {
+          ...product,
+          imgPath: `${PATH_STORAGE_PRODUCTS}/${image.name}`,
+          imgUrl,
+        };
+        return from(updateDoc(ref, finalProduct)).pipe(
+          map(() => ({ loading: false })),
+          catchError(this.handleError<void>('updateProduct')),
+          startWith({ loading: true })
+        );
+      })
     );
   }
 

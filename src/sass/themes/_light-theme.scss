@@ -168,6 +168,7 @@ app-button {
 app-text-field {
   & .text-field {
     &__input {
+      background-color: transparent;
       border: 0.1rem solid theme-get("outline");
       color: theme-get("on-surface");
 
@@ -261,6 +262,20 @@ app-product-item {
 
     &__img-container {
       border: 0.1rem solid theme-get("outline");
+    }
+  }
+}
+
+app-product-image {
+  & .product-img {
+    &__placeholder {
+      background-color: rgba($color: theme-get("outline"), $alpha: 0.16);
+      border: 0.2rem dashed theme-get("outline");
+      color: theme-get("on-surface-variant");
+    }
+
+    &__error {
+      color: theme-get("error");
     }
   }
 }

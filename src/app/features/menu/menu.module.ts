@@ -15,6 +15,7 @@ import { AppTitlePrefix } from '../../core/injectables/app-title-prefix';
 import { DeleteCategoryDialogComponent } from './components/delete-category-dialog/delete-category-dialog.component';
 import { AddEditProductComponent } from './pages/add-edit-product/add-edit-product.component';
 import { AddEditProductTopBarComponent } from './components/add-edit-product-top-bar/add-edit-product-top-bar.component';
+import { ProductImageComponent } from './components/product-image/product-image.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AddEditProductTopBarComponent } from './components/add-edit-product-top
     DeleteCategoryDialogComponent,
     AddEditProductComponent,
     AddEditProductTopBarComponent,
+    ProductImageComponent,
   ],
   imports: [CommonModule, MenuRoutingModule, ShareModule],
   exports: [MenuComponent],

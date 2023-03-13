@@ -4,14 +4,12 @@
   (deleteClick)="onDelete()"
 ></app-add-edit-product-top-bar>
 <main class="add-edit-product">
-  <app-file-field
-    label="Imagen del producto"
-    buttonLabel="Elegir imagen"
-    [value]="img?.name ?? 'Ninguna imagen seleccionada'"
+  <app-product-image
+    [image]="(imgSrc$ | async) ?? ''"
     (valueChange)="onImageChange($event)"
     [error]="(showImgError$ | async) ?? false"
     errorMessage="Ninguna imagen seleccionada"
-  ></app-file-field>
+  ></app-product-image>
   <app-text-field
     label="Nombre"
     [value]="name"
@@ -29,6 +27,7 @@
     label="Precio"
     [options]="cleaveOptions"
     placeholder="4.00"
+    [value]="price ?? ''"
     (valueChange)="onPriceChange($event)"
   ></app-text-field>
   <app-text-field
