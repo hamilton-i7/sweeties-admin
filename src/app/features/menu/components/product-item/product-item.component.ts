@@ -8,6 +8,7 @@ import { IProduct } from '../../../../core/models/product';
 })
 export class ProductItemComponent {
   @Input() product?: IProduct;
+  @Input() active = false;
   @Output() activeChange = new EventEmitter<boolean>();
 
   onActiveToggle(active: boolean) {

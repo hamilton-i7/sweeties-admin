@@ -8,6 +8,7 @@ import { ICategory } from '../../../../core/models/category';
 })
 export class CategoryItemComponent {
   @Input() category?: ICategory;
+  @Input() active = false;
   @Output() activeChange = new EventEmitter<boolean>();
 
   onActiveToggle(active: boolean) {

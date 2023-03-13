@@ -3,12 +3,14 @@
     <li *ngFor="let item of menu.value | keyvalue : setupKeysOrder">
       <app-category-item
         [category]="item.key"
+        [active]="(activeStates$ | async)?.get(item.key.id) ?? false"
         (activeChange)="onCategoryStateChange(item.key, $event)"
       ></app-category-item>
       <ul class="products" *ngIf="item.value.length">
         <li *ngFor="let product of item.value">
           <app-product-item
             [product]="product"
+            [active]="(activeStates$ | async)?.get(product.id) ?? false"
             (activeChange)="onProductStateChange(product, $event)"
           ></app-product-item>
         </li>

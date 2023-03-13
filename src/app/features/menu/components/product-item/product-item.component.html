@@ -19,7 +19,7 @@
   <h2 class="product__name">{{ product.name }}</h2>
   <app-switch
     appClickStopPropagation
-    [checked]="product.active"
+    [checked]="active"
     (checkedChange)="onActiveToggle($event)"
   ></app-switch>
 </a>
