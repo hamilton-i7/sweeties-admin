@@ -1,1 +1,73 @@
-<p>login works!</p>
+<main class="login">
+  <form class="login__container">
+    <app-login-top-bar></app-login-top-bar>
+    <div class="login__fields">
+      <app-text-field
+        class="login__email"
+        label="Correo"
+        type="email"
+        autoComplete="email"
+        (valueChange)="onEmailChange($event)"
+        [error]="(emailErrorMessage$ | async)?.length !== 0"
+        [errorMessage]="(emailErrorMessage$ | async) ?? ''"
+      ></app-text-field>
+      <app-password-field
+        class="login__password"
+        (passwordChange)="onPasswordChange($event)"
+        [error]="(passwordErrorMessage$ | async)?.length !== 0"
+        [errorMessage]="(passwordErrorMessage$ | async) ?? ''"
+      ></app-password-field>
+      <app-button
+        class="login__forgot-password"
+        href="recover-password"
+        label="Olvidé mi contraseña"
+        [variant]="buttonVariant.TEXT"
+      ></app-button>
+      <app-button
+        class="login__confirm"
+        label="Iniciar sesión"
+        (btnClick)="onLogin()"
+      ></app-button>
+    </div>
+  </form>
+</main>
+
+<svg
+  class="pattern"
+  width="1440"
+  height="560"
+  viewBox="0 0 1440 560"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g clip-path="url(#clip0_38_7020)">
+    <mask
+      id="mask0_38_7020"
+      style="mask-type: luminance"
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="1440"
+      height="560"
+    >
+      <path d="M1440 0H0V560H1440V0Z" fill="white" />
+    </mask>
+    <g mask="url(#mask0_38_7020)">
+      <path
+        class="background-wave"
+        d="M0 167C96 156.6 288 114.4 480 115C672 115.6 768 173 960 170C1152 167 1344 114 1440 100V560H0V167Z"
+        fill="#FFD7F7"
+      />
+      <path
+        class="foreground-wave"
+        d="M0 481C144 451 432 332 720 331C1008 330 1296 447 1440 476V560H0V481Z"
+        fill="#8D418A"
+      />
+    </g>
+  </g>
+  <defs>
+    <clipPath id="clip0_38_7020">
+      <rect width="1440" height="560" fill="white" />
+    </clipPath>
+  </defs>
+</svg>

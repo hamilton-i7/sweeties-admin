@@ -9,6 +9,7 @@ import { TITLE_PREFIX } from '../../../../core/constants/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, mergeMap, combineLatest } from 'rxjs';
 import { ProductService } from '../../services/product.service';
+import { EMPTY } from '../../../../core/constants/errors';
 
 @Component({
   selector: 'app-add-edit-category',
@@ -17,6 +18,7 @@ import { ProductService } from '../../services/product.service';
 })
 export class AddEditCategoryComponent implements OnInit {
   public buttonVariant: typeof ButtonVariant = ButtonVariant;
+  readonly EMPTY_ERROR = EMPTY;
 
   name = '';
   editVariant = false;

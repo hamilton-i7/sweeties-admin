@@ -16,6 +16,15 @@ export class TextFieldComponent {
   @Input() options: CleaveOptions = {};
   @Input() selectOptions: unknown[] = [];
   @Input() variant: 'singleline' | 'multiline' | 'select' = 'singleline';
+  @Input() endIcon = false;
+  @Input() type: 'text' | 'password' | 'email' = 'text';
+  @Input() autoComplete:
+    | 'on'
+    | 'off'
+    | 'given-name'
+    | 'family-name'
+    | 'email'
+    | 'current-password' = 'off';
 
   onValueChange(value: string): void {
     this.valueChange.emit(value);

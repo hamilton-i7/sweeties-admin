@@ -7,10 +7,13 @@
   height: var(--top-bar-height);
   width: 100%;
   padding: 0 1.6rem;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 1000;
+
+  &.fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+  }
 
   &__title {
     @extend %title-l;

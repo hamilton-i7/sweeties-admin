@@ -34,16 +34,19 @@
         [placeholder]="placeholder"
         >{{ value }}</textarea
       >
-      <input
-        *ngSwitchCase="'singleline'"
-        type="text"
-        class="text-field__input"
-        #inputBox
-        [value]="value"
-        (input)="onValueChange(inputBox.value)"
-        [placeholder]="placeholder"
-        [cleave]="options"
-      />
+      <div *ngSwitchCase="'singleline'" class="single-line-container">
+        <input
+          [type]="type"
+          class="text-field__input"
+          [autocomplete]="autoComplete"
+          #inputBox
+          [value]="value"
+          (input)="onValueChange(inputBox.value)"
+          [placeholder]="placeholder"
+          [cleave]="options"
+        />
+        <ng-content select="[endIcon]"></ng-content>
+      </div>
     </ng-container>
   </label>
   <p class="text-field__error">{{ error ? errorMessage : "&nbsp;" }}</p>

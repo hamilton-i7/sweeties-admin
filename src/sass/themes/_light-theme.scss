@@ -65,6 +65,10 @@ app-top-bar {
 }
 
 app-icon-button {
+  & .state-layer path {
+    fill: theme-get("on-surface-variant");
+  }
+
   & button:hover .state-layer {
     background-color: rgba(
       $color: theme-get("on-surface-variant"),
@@ -332,6 +336,15 @@ app-switch {
 
     & input:not(:disabled):checked:active + span.slider::after {
       background-color: theme-get("secondary-container");
+    }
+  }
+}
+
+app-login {
+  & .login {
+    &__container {
+      border: 0.2rem solid theme-get("outline");
+      background-color: theme-get("surface");
     }
   }
 }

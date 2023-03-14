@@ -11,6 +11,7 @@ export class TopBarComponent {
 
   @Input() headline = '';
   @Input() showNavigationIcon = false;
+  @Input() fixed = true;
 
   showElevation$ = new BehaviorSubject(false);
 

@@ -10,6 +10,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { ClickStopPropagationDirective } from './directives/click-stop-propagation.directive';
 import { FileFieldComponent } from './components/file-field/file-field.component';
 import { NgxCleaveDirectiveModule } from 'ngx-cleave-directive';
+import { PasswordFieldComponent } from './components/password-field/password-field.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NgxCleaveDirectiveModule } from 'ngx-cleave-directive';
     DialogComponent,
     ClickStopPropagationDirective,
     FileFieldComponent,
+    PasswordFieldComponent,
   ],
   imports: [CommonModule, RouterModule, NgxCleaveDirectiveModule],
   exports: [
@@ -32,6 +34,7 @@ import { NgxCleaveDirectiveModule } from 'ngx-cleave-directive';
     DialogComponent,
     ClickStopPropagationDirective,
     FileFieldComponent,
+    PasswordFieldComponent,
   ],
 })
 export class ShareModule {}

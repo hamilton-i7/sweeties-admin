@@ -11,6 +11,11 @@ import { ICategory } from '../../../../core/models/category';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TITLE_PREFIX } from '../../../../core/constants/common';
+import {
+  EMPTY,
+  NO_CATEGORY,
+  NO_IMAGE,
+} from '../../../../core/constants/errors';
 
 @Component({
   selector: 'app-add-edit-product',
@@ -19,6 +24,9 @@ import { TITLE_PREFIX } from '../../../../core/constants/common';
 })
 export class AddEditProductComponent implements OnInit {
   public buttonVariant: typeof ButtonVariant = ButtonVariant;
+  readonly EMPTY_ERROR = EMPTY;
+  readonly NO_CATEGORY_ERROR = NO_CATEGORY;
+  readonly NO_IMAGE_ERROR = NO_IMAGE;
 
   editVariant = false;
   loading$ = new BehaviorSubject(false);
