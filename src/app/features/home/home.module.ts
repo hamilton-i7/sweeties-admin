@@ -9,8 +9,14 @@ import { NavigationCardComponent } from './components/navigation-card/navigation
 import { HomeCardsComponent } from './components/home-cards/home-cards.component';
 
 @NgModule({
-  declarations: [HomeComponent, HomeTopBarComponent, ClientsComponent, ClientItemComponent, NavigationCardComponent, HomeCardsComponent],
+  declarations: [
+    HomeComponent,
+    HomeTopBarComponent,
+    ClientsComponent,
+    ClientItemComponent,
+    NavigationCardComponent,
+    HomeCardsComponent,
+  ],
   imports: [CommonModule, ShareModule],
-  exports: [HomeComponent],
 })
 export class HomeModule {}

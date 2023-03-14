@@ -34,7 +34,6 @@ import { DeleteProductDialogComponent } from './components/delete-product-dialog
     DeleteProductDialogComponent,
   ],
   imports: [CommonModule, MenuRoutingModule, ShareModule],
-  exports: [MenuComponent],
   providers: [{ provide: TitleStrategy, useClass: AppTitlePrefix }],
 })
 export class MenuModule {}
