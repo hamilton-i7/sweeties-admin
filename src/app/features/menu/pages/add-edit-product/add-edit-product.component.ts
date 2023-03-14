@@ -1,4 +1,3 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { CleaveOptions } from 'cleave.js/options';
 import { ButtonVariant } from '../../../../share/components/button/button.component';
@@ -56,7 +55,6 @@ export class AddEditProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private categoryService: CategoryService,
-    private location: Location,
     private title: Title,
     private activatedRoute: ActivatedRoute,
     private router: Router
@@ -105,7 +103,7 @@ export class AddEditProductComponent implements OnInit {
   }
 
   onClose(): void {
-    this.location.back();
+    this.router.navigate(['/menu'], { replaceUrl: true });
   }
 
   onCloseDialog(): void {
@@ -167,7 +165,7 @@ export class AddEditProductComponent implements OnInit {
   }
 
   onCancel(): void {
-    this.location.back();
+    this.router.navigate(['/menu'], { replaceUrl: true });
   }
 
   onConfirm(): void {
@@ -201,7 +199,7 @@ export class AddEditProductComponent implements OnInit {
 
     this.productService.addProduct(product, this.img!).subscribe((state) => {
       if (!state.loading) {
-        this.location.back();
+        this.router.navigate(['/menu'], { replaceUrl: true });
       }
     });
   }
@@ -226,7 +224,7 @@ export class AddEditProductComponent implements OnInit {
 
     this.productService.updateProduct(product, this.img).subscribe((state) => {
       if (!state.loading) {
-        this.location.back();
+        this.router.navigate(['/menu'], { replaceUrl: true });
       }
     });
   }

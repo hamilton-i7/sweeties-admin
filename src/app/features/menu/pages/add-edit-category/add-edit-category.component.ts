@@ -1,4 +1,3 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ICategory } from '../../../../core/models/category';
 import { ButtonVariant } from '../../../../share/components/button/button.component';
@@ -29,7 +28,6 @@ export class AddEditCategoryComponent implements OnInit {
   showError$ = new BehaviorSubject(false);
 
   constructor(
-    private location: Location,
     private categoryService: CategoryService,
     private productService: ProductService,
     private title: Title,
@@ -64,7 +62,7 @@ export class AddEditCategoryComponent implements OnInit {
   }
 
   onClose(): void {
-    this.location.back();
+    this.router.navigate(['/menu'], { replaceUrl: true });
   }
 
   onCloseDialog(): void {
@@ -110,7 +108,7 @@ export class AddEditCategoryComponent implements OnInit {
   }
 
   onCancel(): void {
-    this.location.back();
+    this.router.navigate(['/menu'], { replaceUrl: true });
   }
 
   onConfirm(): void {
@@ -139,7 +137,7 @@ export class AddEditCategoryComponent implements OnInit {
 
     this.categoryService.addCategory(category).subscribe((state) => {
       if (!state.loading) {
-        this.location.back();
+        this.router.navigate(['/menu'], { replaceUrl: true });
       }
     });
   }
@@ -161,7 +159,7 @@ export class AddEditCategoryComponent implements OnInit {
 
     this.categoryService.updateCategory(category).subscribe((state) => {
       if (!state.loading) {
-        this.location.back();
+        this.router.navigate(['/menu'], { replaceUrl: true });
       }
     });
   }
