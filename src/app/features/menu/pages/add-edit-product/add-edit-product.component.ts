@@ -182,7 +182,7 @@ export class AddEditProductComponent implements OnInit {
       categoryId: this.selectedCategory!.id,
       name: this.name.trim(),
       description: this.description?.trim() ?? null,
-      price: this.price,
+      price: this.formatToCurrency(),
       active: false,
       recommended: this.recommended$.value,
       imgPath: '',
@@ -192,7 +192,7 @@ export class AddEditProductComponent implements OnInit {
     };
 
     this.productService.addProduct(product, this.img!).subscribe((state) => {
-      if (!state.error) {
+      if (!state.loading) {
         this.location.back();
       }
     });
@@ -211,13 +211,13 @@ export class AddEditProductComponent implements OnInit {
       categoryId: this.selectedCategory!.id,
       name: this.name.trim(),
       description: this.description?.trim() ?? null,
-      price: this.price,
+      price: this.formatToCurrency(),
       recommended: this.recommended$.value,
       updatedAt: now,
     };
 
     this.productService.updateProduct(product, this.img).subscribe((state) => {
-      if (!state.error) {
+      if (!state.loading) {
         this.location.back();
       }
     });
@@ -239,5 +239,15 @@ export class AddEditProductComponent implements OnInit {
       isValid = false;
     }
     return isValid;
+  }
+
+  formatToCurrency(): string {
+    if (!this.price) return '';
+
+    const dollar = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    });
+    return dollar.format(+this.price).replace('$', '');
   }
 }

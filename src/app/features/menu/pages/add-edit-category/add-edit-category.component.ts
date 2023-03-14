@@ -7,7 +7,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { Title } from '@angular/platform-browser';
 import { TITLE_PREFIX } from '../../../../core/constants/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, mergeMap, combineLatest } from 'rxjs';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-add-edit-category',
@@ -28,6 +29,7 @@ export class AddEditCategoryComponent implements OnInit {
   constructor(
     private location: Location,
     private categoryService: CategoryService,
+    private productService: ProductService,
     private title: Title,
     private activatedRoute: ActivatedRoute,
     private router: Router
@@ -74,10 +76,25 @@ export class AddEditCategoryComponent implements OnInit {
   onDeleteConfirm(): void {
     if (!this.category) return;
 
-    this.categoryService.deleteCategory(this.category.id).subscribe((state) => {
-      this.loading$.next(state.loading);
+    combineLatest([
+      this.productService.getProducts().pipe(
+        mergeMap((state) => {
+          const ids =
+            state.value
+              ?.filter((product) => product.categoryId === this.category!.id)
+              ?.map((product) => product.id) ?? [];
+          return this.productService.deleteProducts(ids);
+        })
+      ),
+      this.categoryService.deleteCategory(this.category.id),
+    ]).subscribe(([deleteProductsState, deleteCategoryState]) => {
+      const loading =
+        deleteProductsState.loading || deleteCategoryState.loading;
+      const deleted =
+        (deleteProductsState.value || deleteCategoryState.value) ?? false;
+      this.loading$.next(loading);
 
-      if (!state.loading && !state.error) {
+      if (!loading && deleted) {
         this.router.navigate(['/menu'], { replaceUrl: true });
       }
     });
@@ -119,7 +136,7 @@ export class AddEditCategoryComponent implements OnInit {
     };
 
     this.categoryService.addCategory(category).subscribe((state) => {
-      if (!state.error) {
+      if (!state.loading) {
         this.location.back();
       }
     });
@@ -141,7 +158,7 @@ export class AddEditCategoryComponent implements OnInit {
     };
 
     this.categoryService.updateCategory(category).subscribe((state) => {
-      if (!state.error) {
+      if (!state.loading) {
         this.location.back();
       }
     });

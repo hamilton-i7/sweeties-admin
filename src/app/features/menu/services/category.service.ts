@@ -44,35 +44,35 @@ export class CategoryService {
     );
   }
 
-  addCategory(category: ICategory): Observable<RequestState<void>> {
+  addCategory(category: ICategory): Observable<RequestState<boolean>> {
     const ref = doc(this.firestore, PATH_CATEGORIES, category.id).withConverter(
       categoryConverter
     );
     return from(setDoc(ref, category)).pipe(
-      map(() => ({ loading: false })),
-      catchError(this.handleError<void>('addCategory')),
+      map(() => ({ loading: false, value: true })),
+      catchError(this.handleError<boolean>('addCategory', false)),
       startWith({ loading: true })
     );
   }
 
-  updateCategory(category: ICategory): Observable<RequestState<void>> {
+  updateCategory(category: ICategory): Observable<RequestState<boolean>> {
     const ref = doc(this.firestore, PATH_CATEGORIES, category.id).withConverter(
       categoryConverter
     );
     return from(updateDoc(ref, category)).pipe(
-      map(() => ({ loading: false })),
-      catchError(this.handleError<void>('updateCategory')),
+      map(() => ({ loading: false, value: true })),
+      catchError(this.handleError<boolean>('updateCategory', false)),
       startWith({ loading: true })
     );
   }
 
-  deleteCategory(id: string): Observable<RequestState<void>> {
+  deleteCategory(id: string): Observable<RequestState<boolean>> {
     const ref = doc(this.firestore, PATH_CATEGORIES, id).withConverter(
       categoryConverter
     );
     return from(deleteDoc(ref)).pipe(
-      map(() => ({ loading: false })),
-      catchError(this.handleError<void>('deleteCategory')),
+      map(() => ({ loading: false, value: true })),
+      catchError(this.handleError<boolean>('deleteCategory', false)),
       startWith({ loading: true })
     );
   }
