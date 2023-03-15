@@ -31,7 +31,7 @@ export class UserService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: FirestoreError): Observable<RequestState<T>> => {
       console.error(`${operation} failed: ${error.message}`);
-      return of({ loading: false, error, value: result as T });
+      return of({ loading: false, error: error.message, value: result as T });
     };
   }
 }
