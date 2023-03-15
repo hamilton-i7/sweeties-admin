@@ -7,5 +7,5 @@
   ></app-button>
 
   <app-clients></app-clients>
-  <app-home-cards></app-home-cards>
+  <app-home-cards [role]="(user$ | async)?.role"></app-home-cards>
 </main>

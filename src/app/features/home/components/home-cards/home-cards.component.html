@@ -4,7 +4,7 @@
       <img src="../../../../../assets/menu.svg" alt="Menú de restaurant" />
     </app-navigation-card>
   </li>
-  <li class="home-card-item">
+  <li class="home-card-item" *ngIf="isAuthorized()">
     <app-navigation-card label="Correos">
       <img
         src="../../../../../assets/email.svg"
@@ -12,7 +12,7 @@
       />
     </app-navigation-card>
   </li>
-  <li class="home-card-item">
+  <li class="home-card-item" *ngIf="isAuthorized()">
     <app-navigation-card label="Usuarios">
       <img src="../../../../../assets/team.svg" alt="Equipo de personas" />
     </app-navigation-card>

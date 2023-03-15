@@ -11,7 +11,7 @@ export interface IUser {
 }
 
 export enum UserRole {
-  ADMIN,
-  AUTHOR,
-  EDITOR,
+  ADMIN = 'ADMIN',
+  AUTHOR = 'AUTHOR',
+  EDITOR = 'EDITOR',
 }

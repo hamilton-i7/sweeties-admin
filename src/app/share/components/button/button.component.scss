@@ -13,8 +13,11 @@
   min-width: 4.8rem;
   text-align: center;
   border-radius: 2rem;
-  width: 100%;
   white-space: nowrap;
+
+  &.full-width {
+    width: 100%;
+  }
 
   & svg {
     height: 1.8rem;

@@ -1,5 +1,10 @@
-import { FirestoreDataConverter } from '@angular/fire/firestore';
+import { FirestoreDataConverter, Timestamp } from '@angular/fire/firestore';
 import { ICategory } from '../models/category';
+
+type FirestoreCategory = Omit<ICategory, 'createdAt' | 'updatedAt'> & {
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
+};
 
 export const categoryConverter: FirestoreDataConverter<ICategory> = {
   toFirestore: (product) => ({
@@ -10,7 +15,7 @@ export const categoryConverter: FirestoreDataConverter<ICategory> = {
     updatedAt: product.updatedAt,
   }),
   fromFirestore: (snapshot, options) => {
-    const data: any = snapshot.data(options);
+    const data = snapshot.data(options) as FirestoreCategory;
     const category: ICategory = {
       id: data.id,
       name: data.name,

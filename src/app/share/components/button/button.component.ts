@@ -13,6 +13,7 @@ export class ButtonComponent {
   @Input() variant: ButtonVariant = ButtonVariant.FILLED;
   @Input() disabled = false;
   @Input() href?: string;
+  @Input() fullWidth = false;
 
   onClick(): void {
     if (this.disabled) return;
