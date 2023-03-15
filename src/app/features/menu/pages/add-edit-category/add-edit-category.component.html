@@ -2,6 +2,8 @@
   [editVariant]="editVariant"
   (closeClick)="onClose()"
   (deleteClick)="onDelete()"
+  [canDelete]="(isAdmin$ | async) ?? false"
+  [loading]="(loading$ | async) ?? false"
 ></app-add-edit-category-top-bar>
 <main class="add-edit-category">
   <app-text-field
@@ -16,12 +18,14 @@
       label="Cancelar"
       [variant]="buttonVariant.OUTLINED"
       (btnClick)="onCancel()"
+      [fullWidth]="true"
     ></app-button>
     <app-button
       [label]="editVariant ? 'Actualizar' : 'Agregar'"
       [variant]="buttonVariant.FILLED"
       (btnClick)="onConfirm()"
       [disabled]="(loading$ | async) ?? false"
+      [fullWidth]="true"
     ></app-button>
   </div>
 </main>

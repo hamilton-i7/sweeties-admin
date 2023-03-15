@@ -9,6 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, mergeMap, combineLatest } from 'rxjs';
 import { ProductService } from '../../services/product.service';
 import { EMPTY } from '../../../../core/constants/errors';
+import { AuthService } from '../../../login/services/auth.service';
+import { UserRole } from '../../../../core/models/users';
 
 @Component({
   selector: 'app-add-edit-category',
@@ -26,10 +28,12 @@ export class AddEditCategoryComponent implements OnInit {
   showDeleteDialog$ = new BehaviorSubject(false);
   enableLiveFeedback = false;
   showError$ = new BehaviorSubject(false);
+  isAdmin$ = new BehaviorSubject(false);
 
   constructor(
     private categoryService: CategoryService,
     private productService: ProductService,
+    private authService: AuthService,
     private title: Title,
     private activatedRoute: ActivatedRoute,
     private router: Router
@@ -40,14 +44,14 @@ export class AddEditCategoryComponent implements OnInit {
     if (!categoryId) return;
 
     this.editVariant = true;
-    this.categoryService.getCategory(categoryId).subscribe((state) => {
-      if (state.loading) {
-        this.loading$.next(true);
-        return;
-      }
 
-      this.setupData(state.value);
-      this.loading$.next(false);
+    combineLatest([
+      this.authService.currentUser$,
+      this.categoryService.getCategory(categoryId),
+    ]).subscribe(([userState, categoryState]) => {
+      this.loading$.next(userState.loading || categoryState.loading);
+      this.isAdmin$.next(userState.value?.role === UserRole.ADMIN);
+      this.setupData(categoryState.value);
     });
   }
 

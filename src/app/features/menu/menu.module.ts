@@ -17,6 +17,7 @@ import { AddEditProductComponent } from './pages/add-edit-product/add-edit-produ
 import { AddEditProductTopBarComponent } from './components/add-edit-product-top-bar/add-edit-product-top-bar.component';
 import { ProductImageComponent } from './components/product-image/product-image.component';
 import { DeleteProductDialogComponent } from './components/delete-product-dialog/delete-product-dialog.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,12 @@ import { DeleteProductDialogComponent } from './components/delete-product-dialog
     ProductImageComponent,
     DeleteProductDialogComponent,
   ],
-  imports: [CommonModule, MenuRoutingModule, ShareModule],
+  imports: [
+    CommonModule,
+    MenuRoutingModule,
+    ShareModule,
+    NgxSkeletonLoaderModule.forRoot({ animation: 'pulse' }),
+  ],
   providers: [{ provide: TitleStrategy, useClass: AppTitlePrefix }],
 })
 export class MenuModule {}

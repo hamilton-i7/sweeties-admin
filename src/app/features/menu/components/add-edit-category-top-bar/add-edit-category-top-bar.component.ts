@@ -6,8 +6,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class AddEditCategoryTopBarComponent {
   @Input() editVariant = false;
+  @Input() canDelete = false;
   @Output() closeClick = new EventEmitter<void>();
   @Output() deleteClick = new EventEmitter<void>();
+  @Input() loading = false;
 
   onClose(): void {
     this.closeClick.emit();
