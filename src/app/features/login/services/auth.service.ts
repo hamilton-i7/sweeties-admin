@@ -19,6 +19,7 @@ import {
 import { RequestState } from '../../../core/utils/request';
 import { IUser } from '../../../core/models/users';
 import { UserService } from '../../users/services/user.service';
+import { signOut } from '@firebase/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -60,6 +61,13 @@ export class AuthService {
     return from(signInWithEmailAndPassword(this.auth, email, password)).pipe(
       map((credentials) => ({ loading: false, value: credentials.user })),
       catchError(this.handleError<User>('register')),
+      startWith({ loading: true })
+    );
+  }
+
+  logout(): Observable<RequestState<void>> {
+    return from(signOut(this.auth)).pipe(
+      map(() => ({ loading: false })),
       startWith({ loading: true })
     );
   }

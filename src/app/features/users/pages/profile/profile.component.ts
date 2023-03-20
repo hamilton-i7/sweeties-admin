@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { AfterViewChecked, ChangeDetectorRef, Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { IUser } from '../../../../core/models/users';
 import { ButtonVariant } from '../../../../share/components/button/button.component';
@@ -27,7 +28,8 @@ export class ProfileComponent implements AfterViewChecked {
   constructor(
     private authService: AuthService,
     private location: Location,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngAfterViewChecked(): void {
@@ -65,6 +67,12 @@ export class ProfileComponent implements AfterViewChecked {
   }
 
   onLogout(): void {
-    console.log('LOGGING OUT');
+    this.authService.logout().subscribe((state) => {
+      this.loading$.next(state.loading);
+
+      if (!state.loading) {
+        this.router.navigate(['/login']);
+      }
+    });
   }
 }

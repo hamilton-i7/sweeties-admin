@@ -1,5 +1,5 @@
 <main class="login">
-  <form class="login__container">
+  <form class="login__container" (submit)="onLogin($event)">
     <app-login-top-bar></app-login-top-bar>
     <div class="login__fields">
       <app-text-field
@@ -26,7 +26,7 @@
       <app-button
         class="login__confirm"
         label="Iniciar sesión"
-        (btnClick)="onLogin()"
+        type="submit"
       ></app-button>
     </div>
   </form>

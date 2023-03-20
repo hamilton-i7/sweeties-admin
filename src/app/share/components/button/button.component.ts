@@ -14,6 +14,7 @@ export class ButtonComponent {
   @Input() disabled = false;
   @Input() href?: string;
   @Input() fullWidth = false;
+  @Input() type: 'button' | 'submit' = 'button';
 
   onClick(): void {
     if (this.disabled) return;

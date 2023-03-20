@@ -59,7 +59,9 @@ export class LoginComponent {
     this.passwordErrorMessage$.next('');
   }
 
-  onLogin(): void {
+  onLogin(event: SubmitEvent): void {
+    event.preventDefault();
+
     if (!this.isValidForm()) {
       this.enableLiveFeedback = true;
       return;

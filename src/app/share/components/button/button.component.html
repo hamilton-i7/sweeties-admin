@@ -15,7 +15,7 @@
 
 <button
   *ngIf="!href"
-  type="button"
+  [type]="type"
   class="button"
   [ngClass]="{
     'button--filled': variant === buttonVariant.FILLED,
