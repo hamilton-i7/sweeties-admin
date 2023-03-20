@@ -54,7 +54,7 @@ app-top-bar {
       color: theme-get("on-surface");
     }
 
-    &__actions :not(button.avatar) > svg path {
+    &__actions :not(.avatar) > svg path {
       fill: theme-get("on-surface-variant");
     }
   }

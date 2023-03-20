@@ -2,7 +2,11 @@
   class="top-bar"
   [ngClass]="{ elevation: (showElevation$ | async), fixed: fixed }"
 >
-  <app-icon-button *ngIf="showNavigationIcon" class="top-bar__nav-icon">
+  <app-icon-button
+    *ngIf="showNavigationIcon"
+    class="top-bar__nav-icon"
+    (btnClick)="onNavigationClick()"
+  >
     <ng-content select="[navigationIcon]"></ng-content>
   </app-icon-button>
   <h1 class="top-bar__title">{{ headline }}</h1>

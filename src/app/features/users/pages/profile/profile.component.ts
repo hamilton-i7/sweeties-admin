@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { AfterViewChecked, ChangeDetectorRef, Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IUser } from '../../../../core/models/users';
 import { ButtonVariant } from '../../../../share/components/button/button.component';
@@ -9,7 +10,7 @@ import { AuthService } from '../../../login/services/auth.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements AfterViewChecked {
   public buttonVariant: typeof ButtonVariant = ButtonVariant;
 
   name = '';
@@ -23,15 +24,20 @@ export class ProfileComponent implements OnInit {
   enableLiveFeedback = false;
   loading$ = new BehaviorSubject(false);
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private location: Location,
+    private cdRef: ChangeDetectorRef
+  ) {}
 
-  ngOnInit(): void {
+  ngAfterViewChecked(): void {
     this.authService.currentUser$.subscribe((state) => {
       this.loading$.next(state.loading);
       if (state.loading) return;
       if (state.error) return;
 
       this.setupData(state.value);
+      this.cdRef.detectChanges();
     });
   }
 
@@ -40,6 +46,10 @@ export class ProfileComponent implements OnInit {
     this.name = user.name;
     this.lastName = user.lastName;
     this.email = user.email;
+  }
+
+  onBack(): void {
+    this.location.back();
   }
 
   onNameChange(name: string): void {

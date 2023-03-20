@@ -1,4 +1,10 @@
-import { Component, HostListener, Input } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -12,6 +18,7 @@ export class TopBarComponent {
   @Input() headline = '';
   @Input() showNavigationIcon = false;
   @Input() fixed = true;
+  @Output() navigationClick = new EventEmitter<void>();
 
   showElevation$ = new BehaviorSubject(false);
 
@@ -20,5 +27,9 @@ export class TopBarComponent {
     this.showElevation$.next(
       window.scrollY >= TopBarComponent.NO_ELEVATION_OFFSET_LIMIT
     );
+  }
+
+  onNavigationClick(): void {
+    this.navigationClick.emit();
   }
 }

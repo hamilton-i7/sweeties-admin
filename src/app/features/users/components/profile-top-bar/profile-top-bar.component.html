@@ -1,4 +1,9 @@
-<app-top-bar headline="Perfil" [showNavigationIcon]="true" [fixed]="false">
+<app-top-bar
+  headline="Perfil"
+  [showNavigationIcon]="true"
+  [fixed]="false"
+  (navigationClick)="onBack()"
+>
   <svg
     navigationIcon
     width="24"

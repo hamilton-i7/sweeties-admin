@@ -7,6 +7,7 @@ import { ClientsComponent } from './components/clients/clients.component';
 import { ClientItemComponent } from './components/client-item/client-item.component';
 import { NavigationCardComponent } from './components/navigation-card/navigation-card.component';
 import { HomeCardsComponent } from './components/home-cards/home-cards.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,6 @@ import { HomeCardsComponent } from './components/home-cards/home-cards.component
     NavigationCardComponent,
     HomeCardsComponent,
   ],
-  imports: [CommonModule, ShareModule],
+  imports: [CommonModule, ShareModule, RouterModule],
 })
 export class HomeModule {}
