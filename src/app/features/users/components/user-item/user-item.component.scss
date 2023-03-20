@@ -1,0 +1,34 @@
+@use "../../../../../sass/base/typography";
+
+.user {
+  height: 6.4rem;
+  padding: 0 1.6rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  column-gap: 0.4rem;
+
+  &.skeleton {
+    column-gap: 1.6rem;
+  }
+
+  &__email {
+    @extend %body-l;
+
+    flex: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__controls {
+    display: flex;
+    column-gap: 0.8rem;
+    align-items: center;
+  }
+
+  &__divider {
+    height: 3.2rem;
+    width: 0.1rem;
+  }
+}

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, from, map, catchError, startWith, of } from 'rxjs';
 import {
+  collection,
+  collectionData,
   doc,
   Firestore,
   FirestoreError,
@@ -16,6 +18,17 @@ import { userConverter } from '../../../core/converters/user';
 })
 export class UserService {
   constructor(private firestore: Firestore) {}
+
+  getUsers(): Observable<RequestState<IUser[]>> {
+    const ref = collection(this.firestore, PATH_USERS).withConverter(
+      userConverter
+    );
+    return collectionData(ref, { idField: 'email' }).pipe(
+      map((users) => ({ loading: false, value: users })),
+      catchError(this.handleError<IUser[]>('getUsers', [])),
+      startWith({ loading: true })
+    );
+  }
 
   getUser(email: string): Observable<RequestState<IUser | undefined>> {
     const ref = doc(this.firestore, PATH_USERS, email).withConverter(

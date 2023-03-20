@@ -384,3 +384,21 @@ app-profile {
     }
   }
 }
+
+app-user-item {
+  & .user {
+    &__divider {
+      background-color: theme-get("outline");
+    }
+  }
+}
+
+app-user-list {
+  & app-user-item:nth-child(even) .user {
+    background-color: #f2e7f2;
+  }
+
+  & app-user-item:nth-child(odd) .user {
+    background-color: #f9f2f9;
+  }
+}
