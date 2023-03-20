@@ -1,5 +1,9 @@
 <ng-template [ngIf]="!loading">
-  <app-user-item *ngFor="let user of users" [user]="user"></app-user-item>
+  <app-user-item
+    *ngFor="let user of users"
+    [user]="user"
+    [canDelete]="canDelete"
+  ></app-user-item>
 </ng-template>
 <ng-template [ngIf]="loading">
   <app-user-item

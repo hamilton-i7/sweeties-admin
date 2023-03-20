@@ -18,7 +18,10 @@
     </svg>
   </app-button>
 
-  <app-user-list [users]="(users$ | async) ?? []"></app-user-list>
+  <app-user-list
+    [users]="(users$ | async) ?? []"
+    [canDelete]="(isAdmin$ | async) ?? false"
+  ></app-user-list>
 </main>
 
 <ng-template #skeleton>

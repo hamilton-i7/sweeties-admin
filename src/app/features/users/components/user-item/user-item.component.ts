@@ -10,6 +10,7 @@ export class UserItemComponent {
   @Input() user?: IUser;
   @Output() activeChange = new EventEmitter<boolean>();
   @Input() loading = false;
+  @Input() canDelete = false;
 
   onActiveStateChange(active: boolean): void {
     this.activeChange.emit(active);

@@ -5,8 +5,8 @@
       [checked]="user.active"
       (checkedChange)="onActiveStateChange($event)"
     ></app-switch>
-    <div class="user__divider"></div>
-    <app-icon-button>
+    <div class="user__divider" *ngIf="canDelete"></div>
+    <app-icon-button *ngIf="canDelete">
       <svg
         width="24"
         height="24"

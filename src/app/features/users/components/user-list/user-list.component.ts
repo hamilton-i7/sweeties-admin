@@ -9,6 +9,7 @@ import { IUser, UserRole } from '../../../../core/models/users';
 export class UserListComponent {
   @Input() users: IUser[] = [];
   @Input() loading = false;
+  @Input() canDelete = false;
 
   dummyUsers: IUser[] = [
     {
