@@ -208,13 +208,13 @@ app-text-field {
   & .text-field.disabled {
     color: rgba($color: theme-get("on-surface"), $alpha: 0.38);
 
-    &__label {
+    & .text-field__label,
+    .text-field__input {
       color: inherit;
     }
 
-    &__input {
+    & .text-field__input {
       border: 0.1rem solid rgba($color: theme-get("on-surface"), $alpha: 0.12);
-      color: inherit;
     }
   }
 }
@@ -369,6 +369,15 @@ app-switch {
 
 app-login {
   & .login {
+    &__container {
+      border: 0.2rem solid theme-get("outline");
+      background-color: theme-get("surface");
+    }
+  }
+}
+
+app-profile {
+  & .profile {
     &__container {
       border: 0.2rem solid theme-get("outline");
       background-color: theme-get("surface");

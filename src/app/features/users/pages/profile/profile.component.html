@@ -3,7 +3,7 @@
     <app-profile-top-bar></app-profile-top-bar>
     <div class="profile__fields">
       <app-text-field
-        class="profile__name"
+        class="profile__field"
         label="Nombre"
         autoComplete="given-name"
         [value]="name"
@@ -12,7 +12,7 @@
         [errorMessage]="(nameErrorMessage$ | async) ?? ''"
       ></app-text-field>
       <app-text-field
-        class="profile__last-name"
+        class="profile__field"
         label="Apellido"
         autoComplete="family-name"
         [value]="lastName"
@@ -21,10 +21,10 @@
         [errorMessage]="(lastNameErrorMessage$ | async) ?? ''"
       ></app-text-field>
       <app-text-field
-        class="profile__email"
+        class="profile__field"
         label="Correo"
         type="email"
-        autoComplete="email"
+        [value]="email"
         [disabled]="true"
       ></app-text-field>
       <app-button
