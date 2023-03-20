@@ -101,6 +101,20 @@ app-button {
     & svg path {
       fill: theme-get("primary");
     }
+
+    &.disabled {
+      color: rgba($color: theme-get("on-surface"), $alpha: 0.38);
+
+      & svg path {
+        fill: rgba($color: theme-get("on-surface"), $alpha: 0.38);
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: transparent;
+      }
+    }
   }
 
   & .button--outlined {
@@ -188,6 +202,19 @@ app-text-field {
 
     & .select__arrow svg path {
       fill: theme-get("on-surface-variant");
+    }
+  }
+
+  & .text-field.disabled {
+    color: rgba($color: theme-get("on-surface"), $alpha: 0.38);
+
+    &__label {
+      color: inherit;
+    }
+
+    &__input {
+      border: 0.1rem solid rgba($color: theme-get("on-surface"), $alpha: 0.12);
+      color: inherit;
     }
   }
 }

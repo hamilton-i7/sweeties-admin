@@ -26,6 +26,10 @@
 }
 
 .button {
+  &.disabled {
+    cursor: default;
+  }
+
   &--text {
     @extend %button;
 
@@ -52,9 +56,5 @@
       padding-left: 1.6rem;
       padding-right: 2.4rem;
     }
-  }
-
-  &--filled.disabled {
-    cursor: default;
   }
 }

@@ -1,4 +1,4 @@
-<div class="text-field">
+<div class="text-field" [ngClass]="{ disabled: disabled }">
   <label class="text-field__label">
     <span class="text-field__label-text">{{ label }}</span>
     <ng-container [ngSwitch]="variant">

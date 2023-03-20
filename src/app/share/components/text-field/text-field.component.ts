@@ -25,6 +25,7 @@ export class TextFieldComponent {
     | 'family-name'
     | 'email'
     | 'current-password' = 'off';
+  @Input() disabled = false;
 
   onValueChange(value: string): void {
     this.valueChange.emit(value);
