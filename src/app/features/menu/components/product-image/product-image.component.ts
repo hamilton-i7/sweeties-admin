@@ -10,6 +10,7 @@ export class ProductImageComponent {
   @Output() valueChange = new EventEmitter<File | undefined>();
   @Input() errorMessage = '';
   @Input() error = false;
+  @Input() loading = false;
 
   onValueChange(file?: File): void {
     this.valueChange.emit(file);

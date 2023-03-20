@@ -2,6 +2,8 @@
   [editVariant]="editVariant"
   (closeClick)="onClose()"
   (deleteClick)="onDelete()"
+  [canDelete]="(isAdmin$ | async) ?? false"
+  [loading]="(loading$ | async) ?? false"
 ></app-add-edit-product-top-bar>
 <main class="add-edit-product">
   <app-product-image
@@ -9,6 +11,7 @@
     (valueChange)="onImageChange($event)"
     [error]="(showImgError$ | async) ?? false"
     [errorMessage]="NO_IMAGE_ERROR"
+    [loading]="(loading$ | async) ?? false"
   ></app-product-image>
   <app-text-field
     label="Nombre"
@@ -53,11 +56,13 @@
       [variant]="buttonVariant.OUTLINED"
       label="Cancelar"
       (btnClick)="onCancel()"
+      [fullWidth]="true"
     ></app-button>
     <app-button
       [variant]="buttonVariant.FILLED"
       [label]="editVariant ? 'Actualizar' : 'Agregar'"
       (btnClick)="onConfirm()"
+      [fullWidth]="true"
     ></app-button>
   </div>
 </main>

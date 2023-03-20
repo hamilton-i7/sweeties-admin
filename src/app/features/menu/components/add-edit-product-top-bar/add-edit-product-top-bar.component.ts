@@ -8,6 +8,8 @@ export class AddEditProductTopBarComponent {
   @Input() editVariant = false;
   @Output() closeClick = new EventEmitter<void>();
   @Output() deleteClick = new EventEmitter<void>();
+  @Input() canDelete = false;
+  @Input() loading = false;
 
   onClose(): void {
     this.closeClick.emit();

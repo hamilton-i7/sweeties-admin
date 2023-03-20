@@ -15,6 +15,8 @@ import {
   NO_CATEGORY,
   NO_IMAGE,
 } from '../../../../core/constants/errors';
+import { AuthService } from '../../../login/services/auth.service';
+import { UserRole } from '../../../../core/models/users';
 
 @Component({
   selector: 'app-add-edit-product',
@@ -34,6 +36,7 @@ export class AddEditProductComponent implements OnInit {
     numeralDecimalMark: '.',
     delimiter: ',',
   };
+  isAdmin$ = new BehaviorSubject(false);
 
   categories$ = new BehaviorSubject<ICategory[]>([]);
   product?: IProduct;
@@ -55,6 +58,7 @@ export class AddEditProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private categoryService: CategoryService,
+    private authService: AuthService,
     private title: Title,
     private activatedRoute: ActivatedRoute,
     private router: Router
@@ -67,17 +71,25 @@ export class AddEditProductComponent implements OnInit {
       combineLatest([
         this.categoryService.getCategories(),
         this.productService.getProduct(productId),
-      ]).subscribe(([categoriesState, productState]) => {
-        this.loading$.next(categoriesState.loading || productState.loading);
+        this.authService.currentUser$,
+      ]).subscribe(([categoriesState, productState, userState]) => {
+        this.loading$.next(
+          categoriesState.loading || productState.loading || userState.loading
+        );
+        this.isAdmin$.next(userState.value?.role === UserRole.ADMIN);
         this.categories$.next(categoriesState.value ?? []);
         this.setupData(productState.value, categoriesState.value ?? []);
       });
       return;
     }
 
-    this.categoryService.getCategories().subscribe((state) => {
-      this.loading$.next(state.loading);
-      this.categories$.next(state.value ?? []);
+    combineLatest([
+      this.authService.currentUser$,
+      this.categoryService.getCategories(),
+    ]).subscribe(([userState, categoriesState]) => {
+      this.loading$.next(categoriesState.loading || userState.loading);
+      this.isAdmin$.next(userState.value?.role === UserRole.ADMIN);
+      this.categories$.next(categoriesState.value ?? []);
     });
   }
 
